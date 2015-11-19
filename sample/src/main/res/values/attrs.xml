@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AutoLayout_Layout">
+        <attr name="layout_auto_width" format="integer"/>
+        <attr name="layout_auto_height" format="integer"/>
+
+        <attr name="layout_auto_margin" format="integer"/>
+        <attr name="layout_auto_marginLeft" format="integer"/>
+        <attr name="layout_auto_marginTop" format="integer"/>
+        <attr name="layout_auto_marginRight" format="integer"/>
+        <attr name="layout_auto_marginBottom" format="integer"/>
+        <attr name="layout_auto_marginStart" format="integer"/>
+        <attr name="layout_auto_marginEnd" format="integer"/>
+
+        <attr name="layout_auto_textSize" format="integer"/>
+
+        <attr name="layout_auto_maxWidth" format="integer"/>
+        <attr name="layout_auto_maxHeight" format="integer"/>
+        <attr name="layout_auto_minWidth" format="integer"/>
+        <attr name="layout_auto_minHeight" format="integer"/>
+
+        <attr name="layout_auto_padding" format="integer"/>
+        <attr name="layout_auto_paddingTop" format="integer"/>
+        <attr name="layout_auto_paddingBottom" format="integer"/>
+        <attr name="layout_auto_paddingLeft" format="integer"/>
+        <attr name="layout_auto_paddingRight" format="integer"/>
+    </declare-styleable>
+</resources>

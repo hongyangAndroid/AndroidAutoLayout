@@ -1,0 +1,55 @@
+<zhy.com.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AAcccccc"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <zhy.com.autolayout.AutoLinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_auto_height="180"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_auto_height="180"
+            android:background="#44ff0000"
+            app:layout_auto_width="180"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_auto_height="180"
+            app:layout_auto_width="180"
+            android:background="#86fcff"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_auto_height="180"
+            android:background="#ea91ff"
+            app:layout_auto_width="180"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_auto_height="180"
+            android:background="#3989ff"
+            app:layout_auto_width="180"
+            />
+
+
+    </zhy.com.autolayout.AutoLinearLayout>
+
+
+</zhy.com.autolayout.AutoFrameLayout>
