@@ -72,13 +72,18 @@ dependencies {
     }
 ```
 
+在布局文件中编写时，将：
+
+* LinearLayout -> AutoLinearLayout
+* RelativeLayout -> AutoRelativeLayout
+* FrameLayout -> AutoFrameLayout
 
 ## 目前支持属性
 
 * layout_width
 * layout_height
 * layout_margin(left,top,right,bottom)
-* pading
+* pading(left,top,right,bottom)
 * textSize
 
 
