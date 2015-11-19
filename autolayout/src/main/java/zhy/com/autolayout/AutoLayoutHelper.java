@@ -28,7 +28,6 @@ public class AutoLayoutHelper
 {
     private final ViewGroup mHost;
 
-
     private static final int[] LL = new int[]
             { //
                     android.R.attr.textSize,
@@ -98,6 +97,8 @@ public class AutoLayoutHelper
                 {
                     supportTextSize(view, info);
 
+                    supportPadding(view, info);
+
                     if (params instanceof ViewGroup.MarginLayoutParams)
                     {
                         info.fillMarginLayoutParams((ViewGroup.MarginLayoutParams) params,
@@ -111,6 +112,46 @@ public class AutoLayoutHelper
         }
 
 
+    }
+
+    private void supportPadding(View view, AutoLayoutInfo info)
+    {
+
+        int mAvailableWidth = AutoLayout.getInstance().getAvailableWidth();
+        int mAvailaleHegiht = AutoLayout.getInstance().getAvailaleHeight();
+        int mDesignWidth = AutoLayout.getInstance().getDesignWidth();
+        int mDesignHeight = AutoLayout.getInstance().getDesignHeight();
+
+        int left = view.getPaddingLeft(), right = view.getPaddingRight(), top = view.getPaddingTop(), bottom = view.getPaddingBottom();
+
+        if (info.padding != 0)
+        {
+            int vertical = (int) (info.padding * 1.0f / mDesignHeight * mAvailaleHegiht);
+            int horizon = (int) (info.padding * 1.0f / mDesignWidth * mAvailableWidth);
+            left = right = horizon;
+            top = bottom = vertical;
+        }
+        if (info.paddingLeft != 0)
+        {
+            left = (int) (info.paddingLeft * 1.0f / mDesignWidth * mAvailableWidth);
+        }
+
+        if (info.paddingTop != 0)
+        {
+            top = (int) (info.paddingLeft * 1.0f / mDesignHeight * mAvailaleHegiht);
+        }
+
+        if (info.paddingRight != 0)
+        {
+            right = (int) (info.paddingRight * 1.0f / mDesignHeight * mAvailaleHegiht);
+        }
+
+        if (info.paddingBottom != 0)
+        {
+            bottom = (int) (info.paddingBottom * 1.0f / mDesignHeight * mAvailaleHegiht);
+        }
+
+        view.setPadding(left, top, right, bottom);
     }
 
     private void supportTextSize(View view, AutoLayoutInfo info)
@@ -295,8 +336,6 @@ public class AutoLayoutHelper
             }
             fillLayoutParams(params, widthHint, heightHint);
         }
-
-
     }
 
     public interface AutoLayoutParams
