@@ -47,7 +47,35 @@
         >
 
         <TextView
-            android:id="@+id/id_tv_name3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22px"
+            android:layout_marginTop="16px"
+            android:text="王大炮 WANG.DAPAO"
+            android:textColor="#333"
+            android:textSize="28px"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16px"
+            android:layout_marginLeft="22px"
+            android:text="护照：G50786449"
+            android:textColor="#999"
+            android:textSize="26px"
+            />
+
+    </zhy.com.autolayout.AutoRelativeLayout>
+
+    <zhy.com.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="108px"
+        android:layout_marginTop="26px"
+        android:background="#ffffffff"
+        >
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="22px"
@@ -71,8 +99,36 @@
 
     </zhy.com.autolayout.AutoRelativeLayout>
 
+    <zhy.com.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="108px"
+        android:layout_marginTop="26px"
+        android:background="#ffffffff"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22px"
+            android:layout_marginTop="16px"
+            android:text="王大炮 WANG.DAPAO"
+            android:textColor="#333"
+            android:textSize="28px"
+            />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16px"
+            android:layout_marginLeft="22px"
+            android:text="护照：G50786449"
+            android:textColor="#999"
+            android:textSize="26px"
+            />
+
+    </zhy.com.autolayout.AutoRelativeLayout>
 
 
 </zhy.com.autolayout.AutoLinearLayout>

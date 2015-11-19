@@ -279,7 +279,7 @@ public class AutoLayoutHelper
             }
             if (marginLeft != 0)
             {
-                params.leftMargin = (int) (marginLeft * 1.0f / mDesignHeight * mAvailaleHegiht);
+                params.leftMargin = (int) (marginLeft * 1.0f / mDesignWidth * mAvailableWidth);
             }
             if (marginTop != 0)
             {
@@ -287,7 +287,7 @@ public class AutoLayoutHelper
             }
             if (marginRight != 0)
             {
-                params.rightMargin = (int) (marginRight * 1.0f / mDesignHeight * mAvailaleHegiht);
+                params.rightMargin = (int) (marginRight * 1.0f / mDesignWidth * mAvailableWidth);
             }
             if (marginBottom != 0)
             {
