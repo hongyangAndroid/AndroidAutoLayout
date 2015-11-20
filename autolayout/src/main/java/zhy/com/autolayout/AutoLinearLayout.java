@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 public class AutoLinearLayout extends LinearLayout
 {
 
-    private static final String TAG = "PercentLinearLayout";
     private AutoLayoutHelper mPercentLayoutHelper;
 
     public AutoLinearLayout(Context context, AttributeSet attrs)
