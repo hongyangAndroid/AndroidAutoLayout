@@ -67,6 +67,7 @@ public class AutoLayoutHelper
     public AutoLayoutHelper(ViewGroup host)
     {
         mHost = host;
+
     }
 
 
@@ -80,10 +81,6 @@ public class AutoLayoutHelper
 
     public void adjustChildren(int widthMeasureSpec, int heightMeasureSpec)
     {
-        int widthHint = View.MeasureSpec.getSize(widthMeasureSpec);
-        int heightHint = View.MeasureSpec.getSize(heightMeasureSpec);
-
-
         for (int i = 0, n = mHost.getChildCount(); i < n; i++)
         {
             View view = mHost.getChildAt(i);
@@ -102,10 +99,11 @@ public class AutoLayoutHelper
                     if (params instanceof ViewGroup.MarginLayoutParams)
                     {
                         info.fillMarginLayoutParams((ViewGroup.MarginLayoutParams) params,
-                                widthHint, heightHint);
+                                getAvailableWidth(), getAvailaleHegiht(), getDesignWidth(), getDesignHeight());
                     } else
                     {
-                        info.fillLayoutParams(params, widthHint, heightHint);
+                        info.fillLayoutParams(params,
+                                getAvailableWidth(), getAvailaleHegiht(), getDesignWidth(), getDesignHeight());
                     }
                 }
             }
@@ -117,10 +115,10 @@ public class AutoLayoutHelper
     private void supportPadding(View view, AutoLayoutInfo info)
     {
 
-        int mAvailableWidth = AutoLayout.getInstance().getAvailableWidth();
-        int mAvailaleHegiht = AutoLayout.getInstance().getAvailaleHeight();
-        int mDesignWidth = AutoLayout.getInstance().getDesignWidth();
-        int mDesignHeight = AutoLayout.getInstance().getDesignHeight();
+        int mAvailableWidth = getAvailableWidth();
+        int mAvailaleHegiht = getAvailaleHegiht();
+        int mDesignWidth = getDesignWidth();
+        int mDesignHeight = getDesignHeight();
 
         int left = view.getPaddingLeft(), right = view.getPaddingRight(), top = view.getPaddingTop(), bottom = view.getPaddingBottom();
 
@@ -154,16 +152,36 @@ public class AutoLayoutHelper
         view.setPadding(left, top, right, bottom);
     }
 
+    private int getAvailableWidth()
+    {
+        return AutoLayout.getInstance().getAvailableWidth();
+    }
+
+    private int getAvailaleHegiht()
+    {
+        return AutoLayout.getInstance().getAvailaleHeight();
+
+    }
+
+    private int getDesignWidth()
+    {
+        return AutoLayout.getInstance().getDesignWidth();
+    }
+
+    private int getDesignHeight()
+    {
+        return AutoLayout.getInstance().getDesignHeight();
+    }
+
+
     private void supportTextSize(View view, AutoLayoutInfo info)
     {
         if (!(view instanceof TextView)) return;
         if (info.textSize == 0) return;
 
 
-        int mAvailableWidth = AutoLayout.getInstance().getAvailableWidth();
-        int mAvailaleHegiht = AutoLayout.getInstance().getAvailaleHeight();
-        int mDesignWidth = AutoLayout.getInstance().getDesignWidth();
-        int mDesignHeight = AutoLayout.getInstance().getDesignHeight();
+        int mAvailaleHegiht = getAvailaleHegiht();
+        int mDesignHeight = getDesignHeight();
 
 
         float textSize = info.textSize * 1.0f / mDesignHeight * mAvailaleHegiht;
@@ -266,21 +284,18 @@ public class AutoLayoutHelper
         private int paddingBottom;
 
 
-        public void fillLayoutParams(ViewGroup.LayoutParams params, int widthHint,
-                                     int heightHint)
+        public void fillLayoutParams(ViewGroup.LayoutParams params, int avaWidth,
+                                     int avaHeight, int designWidth, int designHeight)
         {
-            int mAvailableWidth = AutoLayout.getInstance().getAvailableWidth();
-            int mAvailaleHegiht = AutoLayout.getInstance().getAvailaleHeight();
-            int mDesignWidth = AutoLayout.getInstance().getDesignWidth();
-            int mDesignHeight = AutoLayout.getInstance().getDesignHeight();
+
 
             if (widthPx != 0)
             {
-                params.width = (int) (widthPx * 1.0f / mDesignWidth * mAvailableWidth);
+                params.width = (int) (widthPx * 1.0f / designWidth * avaWidth);
             }
             if (heightPx != 0)
             {
-                params.height = (int) (heightPx * 1.0f / mDesignHeight * mAvailaleHegiht);
+                params.height = (int) (heightPx * 1.0f / designHeight * avaHeight);
             }
         }
 
@@ -304,38 +319,36 @@ public class AutoLayoutHelper
                     '}';
         }
 
-        public void fillMarginLayoutParams(ViewGroup.MarginLayoutParams params, int widthHint,
-                                           int heightHint)
+        public void fillMarginLayoutParams(ViewGroup.MarginLayoutParams params, int avaWidth,
+                                           int avaHeight, int designWidth, int designHeight)
         {
 
-            int mAvailableWidth = AutoLayout.getInstance().getAvailableWidth();
-            int mAvailaleHegiht = AutoLayout.getInstance().getAvailaleHeight();
-            int mDesignWidth = AutoLayout.getInstance().getDesignWidth();
-            int mDesignHeight = AutoLayout.getInstance().getDesignHeight();
 
             if (margin != 0)
             {
-                int marginSize = (int) (margin * 1.0f / mDesignHeight * mAvailaleHegiht);
+                int marginSize = (int) (margin * 1.0f / designHeight * avaHeight);
                 params.leftMargin = params.topMargin = params.rightMargin = params.bottomMargin = marginSize;
             }
             if (marginLeft != 0)
             {
-                params.leftMargin = (int) (marginLeft * 1.0f / mDesignWidth * mAvailableWidth);
+                params.leftMargin = (int) (marginLeft * 1.0f / designWidth * avaWidth);
             }
             if (marginTop != 0)
             {
-                params.topMargin = (int) (marginTop * 1.0f / mDesignHeight * mAvailaleHegiht);
+                params.topMargin = (int) (marginTop * 1.0f / designHeight * avaHeight);
             }
             if (marginRight != 0)
             {
-                params.rightMargin = (int) (marginRight * 1.0f / mDesignWidth * mAvailableWidth);
+                params.rightMargin = (int) (marginRight * 1.0f / designWidth * avaWidth);
             }
             if (marginBottom != 0)
             {
-                params.bottomMargin = (int) (marginBottom * 1.0f / mDesignHeight * mAvailaleHegiht);
+                params.bottomMargin = (int) (marginBottom * 1.0f / designHeight * avaHeight);
             }
-            fillLayoutParams(params, widthHint, heightHint);
+            fillLayoutParams(params, avaWidth, avaHeight, designWidth, designHeight);
         }
+
+
     }
 
     public interface AutoLayoutParams

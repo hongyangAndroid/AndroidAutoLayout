@@ -24,7 +24,8 @@ public class AutoLinearLayout extends LinearLayout
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
-        mPercentLayoutHelper.adjustChildren(widthMeasureSpec, heightMeasureSpec);
+        if (!isInEditMode())
+            mPercentLayoutHelper.adjustChildren(widthMeasureSpec, heightMeasureSpec);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
