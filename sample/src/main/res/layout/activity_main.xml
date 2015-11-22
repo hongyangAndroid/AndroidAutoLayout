@@ -14,7 +14,6 @@
         android:layout_marginTop="26px"
         android:background="#ffffffff"
         >
-
         <ImageView
             android:id="@+id/id_tv_add"
             android:layout_width="34px"
@@ -24,7 +23,6 @@
             android:layout_marginTop="26px"
             android:src="@mipmap/add"
             />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,9 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="108px"
         android:layout_marginTop="26px"
-        android:background="#ffffffff"
-        >
-
+        android:background="#ffffffff">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
