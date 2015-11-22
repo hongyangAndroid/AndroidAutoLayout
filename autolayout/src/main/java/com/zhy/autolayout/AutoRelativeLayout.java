@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package zhy.com.autolayout;
+package com.zhy.autolayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -51,7 +51,7 @@ public class AutoRelativeLayout extends RelativeLayout
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
         if (!isInEditMode())
-            mHelper.adjustChildren(widthMeasureSpec, heightMeasureSpec);
+            mHelper.adjustChildren();
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 

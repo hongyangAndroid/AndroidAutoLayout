@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AutoLayout_Layout">
-        <attr name="layout_use_system_px" format="boolean"/>
+        <attr name="layout_auto_textSizeBaseWidth" format="boolean"/>
     </declare-styleable>
 </resources>

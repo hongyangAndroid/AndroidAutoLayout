@@ -1,22 +1,22 @@
 package com.zhy.sample;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import zhy.com.autolayout.AutoLayout;
+import com.zhy.autolayout.AutoLayout;
+import com.zhy.autolayout.AutoLayoutActivity;
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AutoLayoutActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main02);
-        AutoLayout.getInstance().auto(this, true);
+        setContentView(R.layout.activity_main);
+        AutoLayout.getInstance().auto(this);
     }
 
     @Override

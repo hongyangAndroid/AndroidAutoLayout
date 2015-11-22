@@ -1,5 +1,6 @@
-<zhy.com.autolayout.AutoLinearLayout
+<com.zhy.autolayout.AutoLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <zhy.com.autolayout.AutoRelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="86px"
         android:layout_marginTop="26px"
@@ -33,13 +34,14 @@
             android:text="新增旅客"
             android:textColor="#1fb6c4"
             android:textSize="32px"
+            app:layout_auto_textSizeBaseWidth="true"
             />
 
 
-    </zhy.com.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
 
-    <zhy.com.autolayout.AutoRelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="108px"
         android:layout_marginTop="26px"
@@ -66,40 +68,9 @@
             android:textSize="26px"
             />
 
-    </zhy.com.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
-    <zhy.com.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="108px"
-        android:layout_marginTop="26px"
-        android:background="#ffffffff"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="22px"
-            android:layout_marginTop="16px"
-            android:text="王大炮 WANG.DAPAO"
-            android:textColor="#333"
-            android:textSize="28px"
-            />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="16px"
-            android:layout_marginLeft="22px"
-            android:text="护照：G50786449"
-            android:textColor="#999"
-            android:textSize="26px"
-            />
-
-    </zhy.com.autolayout.AutoRelativeLayout>
-
-    <zhy.com.autolayout.AutoRelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="108px"
         android:layout_marginTop="26px"
@@ -128,7 +99,38 @@
             android:textSize="26px"
             />
 
-    </zhy.com.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="108px"
+        android:layout_marginTop="26px"
+        android:background="#ffffffff"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22px"
+            android:layout_marginTop="16px"
+            android:text="王大炮 WANG.DAPAO"
+            android:textColor="#333"
+            android:textSize="28px"
+            />
 
 
-</zhy.com.autolayout.AutoLinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16px"
+            android:layout_marginLeft="22px"
+            android:text="护照：G50786449"
+            android:textColor="#999"
+            android:textSize="26px"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

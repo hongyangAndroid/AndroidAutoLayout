@@ -1,4 +1,4 @@
-package zhy.com.autolayout;
+package com.zhy.autolayout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -52,6 +52,11 @@ public class AutoLayout
     public int getDesignHeight()
     {
         return mDesignHeight;
+    }
+
+    public void auto(Activity activity)
+    {
+        auto(activity, true);
     }
 
 

@@ -1,4 +1,4 @@
-package zhy.com.autolayout;
+package com.zhy.autolayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -25,7 +25,7 @@ public class AutoLinearLayout extends LinearLayout
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
         if (!isInEditMode())
-            mPercentLayoutHelper.adjustChildren(widthMeasureSpec, heightMeasureSpec);
+            mPercentLayoutHelper.adjustChildren();
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 

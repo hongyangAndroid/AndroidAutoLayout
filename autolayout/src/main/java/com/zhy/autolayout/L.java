@@ -1,4 +1,4 @@
-package zhy.com.autolayout;
+package com.zhy.autolayout;
 
 import android.util.Log;
 

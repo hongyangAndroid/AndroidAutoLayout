@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package zhy.com.autolayout;
+package com.zhy.autolayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -79,7 +79,7 @@ public class AutoLayoutHelper
 
     }
 
-    public void adjustChildren(int widthMeasureSpec, int heightMeasureSpec)
+    public void adjustChildren()
     {
         for (int i = 0, n = mHost.getChildCount(); i < n; i++)
         {
@@ -179,13 +179,15 @@ public class AutoLayoutHelper
         if (!(view instanceof TextView)) return;
         if (info.textSize == 0) return;
 
-
-        int mAvailaleHegiht = getAvailaleHegiht();
-        int mDesignHeight = getDesignHeight();
-
-
-        float textSize = info.textSize * 1.0f / mDesignHeight * mAvailaleHegiht;
-
+        boolean textSizeBaseWidth = info.textSizeBaseWidth;
+        float textSize;
+        if (textSizeBaseWidth)
+        {
+            textSize = info.textSize * 1.0f / getDesignWidth() * getAvailableWidth();
+        } else
+        {
+            textSize = info.textSize * 1.0f / getDesignHeight() * getAvailaleHegiht();
+        }
         //textSize = textSize / 1.34f;
 
         ((TextView) view).setIncludeFontPadding(false);
@@ -198,9 +200,13 @@ public class AutoLayoutHelper
     {
         AutoLayoutInfo info = new AutoLayoutInfo();
 
+        boolean isTextSizeBaseWidth = isTextSizeBaseWidth(context, attrs);
+        info.textSizeBaseWidth = isTextSizeBaseWidth;
+
         TypedArray array = context.obtainStyledAttributes(attrs, LL);
 
         int n = array.getIndexCount();
+
 
         for (int i = 0; i < n; i++)
         {
@@ -263,6 +269,15 @@ public class AutoLayoutHelper
         return info;
     }
 
+    private static boolean isTextSizeBaseWidth(Context context, AttributeSet attrs)
+    {
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AutoLayout_Layout);
+        boolean res = array.getBoolean(R.styleable.AutoLayout_Layout_layout_auto_textSizeBaseWidth, false);
+        L.e("isTextSizeBaseWidth = " + res);
+        array.recycle();
+        return res;
+    }
+
 
     public static class AutoLayoutInfo
     {
@@ -282,6 +297,8 @@ public class AutoLayoutHelper
         private int paddingRight;
         private int paddingTop;
         private int paddingBottom;
+
+        private boolean textSizeBaseWidth;
 
 
         public void fillLayoutParams(ViewGroup.LayoutParams params, int avaWidth,
@@ -322,7 +339,6 @@ public class AutoLayoutHelper
         public void fillMarginLayoutParams(ViewGroup.MarginLayoutParams params, int avaWidth,
                                            int avaHeight, int designWidth, int designHeight)
         {
-
 
             if (margin != 0)
             {

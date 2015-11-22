@@ -1,13 +1,9 @@
-package com.zhy.sample;
+package com.zhy.autolayout;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
-
-import zhy.com.autolayout.AutoFrameLayout;
-import zhy.com.autolayout.AutoLinearLayout;
-import zhy.com.autolayout.AutoRelativeLayout;
 
 ;
 
