@@ -110,10 +110,6 @@ public class AutoFrameLayout extends FrameLayout
             return mAutoLayoutInfo;
         }
 
-        @Override
-        protected void setBaseAttributes(TypedArray a, int widthAttr, int heightAttr)
-        {
-            AutoLayoutHelper.fetchWidthAndHeight(this, a, widthAttr, heightAttr);
-        }
+
     }
 }

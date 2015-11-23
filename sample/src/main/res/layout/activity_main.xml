@@ -125,5 +125,10 @@
 
     </RelativeLayout>
 
+    <include
+        layout="@layout/include_test"
+        >
+    </include>
+
 
 </LinearLayout>

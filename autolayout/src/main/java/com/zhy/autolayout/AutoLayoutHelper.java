@@ -71,14 +71,6 @@ public class AutoLayoutHelper
     }
 
 
-    public static void fetchWidthAndHeight(ViewGroup.LayoutParams params, TypedArray array,
-                                           int widthAttr, int heightAttr)
-    {
-        params.width = array.getLayoutDimension(widthAttr, 0);
-        params.height = array.getLayoutDimension(heightAttr, 0);
-
-    }
-
     public void adjustChildren()
     {
         for (int i = 0, n = mHost.getChildCount(); i < n; i++)

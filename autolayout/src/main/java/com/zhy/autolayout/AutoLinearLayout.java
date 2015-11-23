@@ -1,7 +1,6 @@
 package com.zhy.autolayout;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -36,10 +35,11 @@ public class AutoLinearLayout extends LinearLayout
         super.onLayout(changed, l, t, r, b);
     }
 
+
     @Override
     public LayoutParams generateLayoutParams(AttributeSet attrs)
     {
-        return new LayoutParams(getContext(), attrs);
+        return new AutoLinearLayout.LayoutParams(getContext(), attrs);
     }
 
 
@@ -60,11 +60,6 @@ public class AutoLinearLayout extends LinearLayout
             return mAutoLayoutInfo;
         }
 
-        @Override
-        protected void setBaseAttributes(TypedArray a, int widthAttr, int heightAttr)
-        {
-            AutoLayoutHelper.fetchWidthAndHeight(this, a, widthAttr, heightAttr);
-        }
 
         public LayoutParams(int width, int height)
         {

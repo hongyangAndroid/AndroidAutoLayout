@@ -47,6 +47,8 @@ public class AutoRelativeLayout extends RelativeLayout
         return new LayoutParams(getContext(), attrs);
     }
 
+
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
@@ -93,10 +95,6 @@ public class AutoRelativeLayout extends RelativeLayout
             return mAutoLayoutInfo;
         }
 
-        @Override
-        protected void setBaseAttributes(TypedArray a, int widthAttr, int heightAttr)
-        {
-            AutoLayoutHelper.fetchWidthAndHeight(this, a, widthAttr, heightAttr);
-        }
+
     }
 }

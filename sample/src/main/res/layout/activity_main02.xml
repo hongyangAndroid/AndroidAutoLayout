@@ -38,6 +38,7 @@
             />
 
 
+
     </com.zhy.autolayout.AutoRelativeLayout>
 
 
@@ -131,6 +132,8 @@
             />
 
     </com.zhy.autolayout.AutoRelativeLayout>
+
+    <include layout="@layout/include_test" ></include>
 
 
 </com.zhy.autolayout.AutoLinearLayout>

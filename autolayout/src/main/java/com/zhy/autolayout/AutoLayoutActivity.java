@@ -37,7 +37,6 @@ public class AutoLayoutActivity extends AppCompatActivity
 
         if (view != null) return view;
 
-
         return super.onCreateView(name, context, attrs);
     }
 
