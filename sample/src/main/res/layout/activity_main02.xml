@@ -34,7 +34,6 @@
             android:text="新增旅客"
             android:textColor="#1fb6c4"
             android:textSize="32px"
-            app:layout_auto_textSizeBaseWidth="true"
             />
 
 
