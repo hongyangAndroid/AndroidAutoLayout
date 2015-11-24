@@ -128,12 +128,12 @@ public class AutoLayoutHelper
 
         if (info.paddingTop != 0)
         {
-            top = (int) (info.paddingLeft * 1.0f / mDesignHeight * mAvailaleHegiht);
+            top = (int) (info.paddingTop * 1.0f / mDesignHeight * mAvailaleHegiht);
         }
 
         if (info.paddingRight != 0)
         {
-            right = (int) (info.paddingRight * 1.0f / mDesignHeight * mAvailaleHegiht);
+            right = (int) (info.paddingRight * 1.0f / mDesignWidth * mAvailableWidth);
         }
 
         if (info.paddingBottom != 0)
@@ -265,7 +265,6 @@ public class AutoLayoutHelper
     {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AutoLayout_Layout);
         boolean res = array.getBoolean(R.styleable.AutoLayout_Layout_layout_auto_textSizeBaseWidth, false);
-        L.e("isTextSizeBaseWidth = " + res);
         array.recycle();
         return res;
     }
