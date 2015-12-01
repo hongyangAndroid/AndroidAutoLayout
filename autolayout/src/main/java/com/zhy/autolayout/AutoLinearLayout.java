@@ -11,12 +11,11 @@ import android.widget.LinearLayout;
 public class AutoLinearLayout extends LinearLayout
 {
 
-    private AutoLayoutHelper mPercentLayoutHelper;
+    private AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
 
     public AutoLinearLayout(Context context, AttributeSet attrs)
     {
         super(context, attrs);
-        mPercentLayoutHelper = new AutoLayoutHelper(this);
     }
 
 
@@ -24,7 +23,7 @@ public class AutoLinearLayout extends LinearLayout
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
         if (!isInEditMode())
-            mPercentLayoutHelper.adjustChildren();
+            mHelper.adjustChildren();
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 

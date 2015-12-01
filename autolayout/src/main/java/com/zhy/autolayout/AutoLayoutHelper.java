@@ -16,6 +16,7 @@
 
 package com.zhy.autolayout;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -63,11 +64,22 @@ public class AutoLayoutHelper
     private static final String VAL_WRAP_CONTENT = "-2";
     private static final String VAL_MATCH_PARENT = "-1";
 
+    /**
+     * TODO  move to other place
+     */
+    private AutoLayoutConifg mAutoLayout;
 
     public AutoLayoutHelper(ViewGroup host)
     {
         mHost = host;
+        mAutoLayout = new AutoLayoutConifg();
 
+        boolean ignoreStatusBar = true;
+        if (host.getContext() instanceof UseStatusBar)
+        {
+            ignoreStatusBar = false;
+        }
+        mAutoLayout.auto((Activity) host.getContext(), ignoreStatusBar);
     }
 
 
@@ -91,11 +103,11 @@ public class AutoLayoutHelper
                     if (params instanceof ViewGroup.MarginLayoutParams)
                     {
                         info.fillMarginLayoutParams((ViewGroup.MarginLayoutParams) params,
-                                getAvailableWidth(), getAvailaleHegiht(), getDesignWidth(), getDesignHeight());
+                                getAvailableWidth(), getAvailableHeight(), getDesignWidth(), getDesignHeight());
                     } else
                     {
                         info.fillLayoutParams(params,
-                                getAvailableWidth(), getAvailaleHegiht(), getDesignWidth(), getDesignHeight());
+                                getAvailableWidth(), getAvailableHeight(), getDesignWidth(), getDesignHeight());
                     }
                 }
             }
@@ -107,38 +119,73 @@ public class AutoLayoutHelper
     private void supportPadding(View view, AutoLayoutInfo info)
     {
 
-        int mAvailableWidth = getAvailableWidth();
-        int mAvailaleHegiht = getAvailaleHegiht();
-        int mDesignWidth = getDesignWidth();
-        int mDesignHeight = getDesignHeight();
+        int avaWidth = getAvailableWidth();
+        int avaHeight = getAvailableHeight();
+        int designWidth = getDesignWidth();
+        int designHeight = getDesignHeight();
 
         int left = view.getPaddingLeft(), right = view.getPaddingRight(), top = view.getPaddingTop(), bottom = view.getPaddingBottom();
 
         if (info.padding != 0)
         {
-            int vertical = (int) (info.padding * 1.0f / mDesignHeight * mAvailaleHegiht);
-            int horizon = (int) (info.padding * 1.0f / mDesignWidth * mAvailableWidth);
-            left = right = horizon;
-            top = bottom = vertical;
+            if (AutoBase.contains(info.autobaseWidth, AutoBase.PADDING))
+            {
+                left = top = right = bottom = (int) (info.padding * 1.0f / designWidth * avaWidth);
+
+            } else if (AutoBase.contains(info.autobaseHeight, AutoBase.PADDING))
+            {
+                left = top = right = bottom = (int) (info.padding * 1.0f / designHeight * avaHeight);
+            } else
+            {
+                int vertical = (int) (info.padding * 1.0f / designHeight * avaHeight);
+                int horizon = (int) (info.padding * 1.0f / designWidth * avaWidth);
+                left = right = horizon;
+                top = bottom = vertical;
+            }
         }
         if (info.paddingLeft != 0)
         {
-            left = (int) (info.paddingLeft * 1.0f / mDesignWidth * mAvailableWidth);
+            if (AutoBase.contains(info.autobaseHeight, AutoBase.PADDING_LEFT))
+            {
+                left = (int) (info.paddingLeft * 1.0f / designHeight * avaHeight);
+            } else
+            {
+                left = (int) (info.paddingLeft * 1.0f / designWidth * avaWidth);
+            }
+
         }
 
         if (info.paddingTop != 0)
         {
-            top = (int) (info.paddingTop * 1.0f / mDesignHeight * mAvailaleHegiht);
+            if (AutoBase.contains(info.autobaseWidth, AutoBase.PADDING_TOP))
+            {
+                top = (int) (info.paddingTop * 1.0f / designWidth * avaWidth);
+            } else
+            {
+                top = (int) (info.paddingTop * 1.0f / designHeight * avaHeight);
+            }
         }
 
         if (info.paddingRight != 0)
         {
-            right = (int) (info.paddingRight * 1.0f / mDesignWidth * mAvailableWidth);
+            if (AutoBase.contains(info.autobaseHeight, AutoBase.PADDING_RIGHT))
+            {
+                right = (int) (info.paddingRight * 1.0f / designHeight * avaHeight);
+            } else
+            {
+                right = (int) (info.paddingRight * 1.0f / designWidth * avaWidth);
+            }
         }
 
         if (info.paddingBottom != 0)
         {
-            bottom = (int) (info.paddingBottom * 1.0f / mDesignHeight * mAvailaleHegiht);
+            if (AutoBase.contains(info.autobaseWidth, AutoBase.PADDING_TOP))
+            {
+                bottom = (int) (info.paddingBottom * 1.0f / designWidth * avaWidth);
+            } else
+            {
+                bottom = (int) (info.paddingBottom * 1.0f / designHeight * avaHeight);
+            }
         }
 
         view.setPadding(left, top, right, bottom);
@@ -146,23 +193,23 @@ public class AutoLayoutHelper
 
     private int getAvailableWidth()
     {
-        return AutoLayout.getInstance().getAvailableWidth();
+        return mAutoLayout.getAvailableWidth();
     }
 
-    private int getAvailaleHegiht()
+    private int getAvailableHeight()
     {
-        return AutoLayout.getInstance().getAvailaleHeight();
+        return mAutoLayout.getAvailaleHeight();
 
     }
 
     private int getDesignWidth()
     {
-        return AutoLayout.getInstance().getDesignWidth();
+        return mAutoLayout.getDesignWidth();
     }
 
     private int getDesignHeight()
     {
-        return AutoLayout.getInstance().getDesignHeight();
+        return mAutoLayout.getDesignHeight();
     }
 
 
@@ -171,17 +218,15 @@ public class AutoLayoutHelper
         if (!(view instanceof TextView)) return;
         if (info.textSize == 0) return;
 
-        boolean textSizeBaseWidth = info.textSizeBaseWidth;
         float textSize;
-        if (textSizeBaseWidth)
+        if (AutoBase.contains(info.autobaseWidth, AutoBase.TEXTSIZE))
         {
             textSize = info.textSize * 1.0f / getDesignWidth() * getAvailableWidth();
         } else
         {
-            textSize = info.textSize * 1.0f / getDesignHeight() * getAvailaleHegiht();
+            textSize = info.textSize * 1.0f / getDesignHeight() * getAvailableHeight();
         }
         //textSize = textSize / 1.34f;
-
         ((TextView) view).setIncludeFontPadding(false);
         ((TextView) view).setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
     }
@@ -192,8 +237,10 @@ public class AutoLayoutHelper
     {
         AutoLayoutInfo info = new AutoLayoutInfo();
 
-        boolean isTextSizeBaseWidth = isTextSizeBaseWidth(context, attrs);
-        info.textSizeBaseWidth = isTextSizeBaseWidth;
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoLayout_Layout);
+        info.autobaseWidth = a.getInt(R.styleable.AutoLayout_Layout_layout_auto_basewidth, 0);
+        info.autobaseHeight = a.getInt(R.styleable.AutoLayout_Layout_layout_auto_baseheight, 0);
+        a.recycle();
 
         TypedArray array = context.obtainStyledAttributes(attrs, LL);
 
@@ -204,7 +251,6 @@ public class AutoLayoutHelper
         {
             int index = array.getIndex(i);
             String val = array.getString(index);
-            L.e(val);
             if (val.equals(VAL_WRAP_CONTENT) || val.equals(VAL_MATCH_PARENT))
             {
                 continue;
@@ -261,14 +307,6 @@ public class AutoLayoutHelper
         return info;
     }
 
-    private static boolean isTextSizeBaseWidth(Context context, AttributeSet attrs)
-    {
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AutoLayout_Layout);
-        boolean res = array.getBoolean(R.styleable.AutoLayout_Layout_layout_auto_textSizeBaseWidth, false);
-        array.recycle();
-        return res;
-    }
-
 
     public static class AutoLayoutInfo
     {
@@ -289,21 +327,36 @@ public class AutoLayoutHelper
         private int paddingTop;
         private int paddingBottom;
 
-        private boolean textSizeBaseWidth;
+        private int autobaseWidth = 0;
+        private int autobaseHeight = 0;
 
 
         public void fillLayoutParams(ViewGroup.LayoutParams params, int avaWidth,
                                      int avaHeight, int designWidth, int designHeight)
         {
 
-
             if (widthPx != 0)
             {
-                params.width = (int) (widthPx * 1.0f / designWidth * avaWidth);
+                if (AutoBase.contains(autobaseHeight, AutoBase.WIDTH))
+                {
+                    params.width = (int) (widthPx * 1.0f / designHeight * avaHeight);
+                } else
+                {
+                    params.width = (int) (widthPx * 1.0f / designWidth * avaWidth);
+                }
+
             }
             if (heightPx != 0)
             {
-                params.height = (int) (heightPx * 1.0f / designHeight * avaHeight);
+                if (AutoBase.contains(autobaseWidth, AutoBase.HEIGHT))
+                {
+                    params.height = (int) (heightPx * 1.0f / designWidth * avaWidth);
+                } else
+                {
+                    params.height = (int) (heightPx * 1.0f / designHeight * avaHeight);
+                }
+
+
             }
         }
 
@@ -333,24 +386,63 @@ public class AutoLayoutHelper
 
             if (margin != 0)
             {
-                int marginSize = (int) (margin * 1.0f / designHeight * avaHeight);
-                params.leftMargin = params.topMargin = params.rightMargin = params.bottomMargin = marginSize;
+                if (AutoBase.contains(autobaseWidth, AutoBase.MARGIN))
+                {
+                    int marginSize = (int) (margin * 1.0f / designWidth * avaWidth);
+                    params.leftMargin = params.topMargin = params.rightMargin = params.bottomMargin = marginSize;
+
+                } else if (AutoBase.contains(autobaseHeight, AutoBase.MARGIN))
+                {
+                    int marginSize = (int) (margin * 1.0f / designHeight * avaHeight);
+                    params.leftMargin = params.topMargin = params.rightMargin = params.bottomMargin = marginSize;
+                } else
+                {
+                    int vertical = (int) (margin * 1.0f / designHeight * avaHeight);
+                    int horizon = (int) (margin * 1.0f / designWidth * avaWidth);
+                    params.leftMargin = params.rightMargin = horizon;
+                    params.topMargin = params.bottomMargin = vertical;
+                }
             }
             if (marginLeft != 0)
             {
-                params.leftMargin = (int) (marginLeft * 1.0f / designWidth * avaWidth);
+                if (AutoBase.contains(autobaseHeight, AutoBase.MARGIN_LEFT))
+                {
+                    params.leftMargin = (int) (marginLeft * 1.0f / designHeight * avaHeight);
+                } else
+                {
+                    params.leftMargin = (int) (marginLeft * 1.0f / designWidth * avaWidth);
+                }
             }
             if (marginTop != 0)
             {
-                params.topMargin = (int) (marginTop * 1.0f / designHeight * avaHeight);
+                if (AutoBase.contains(autobaseWidth, AutoBase.MARGIN_TOP))
+                {
+                    params.topMargin = (int) (marginTop * 1.0f / designWidth * avaWidth);
+                } else
+                {
+                    params.topMargin = (int) (marginTop * 1.0f / designHeight * avaHeight);
+                }
             }
             if (marginRight != 0)
             {
-                params.rightMargin = (int) (marginRight * 1.0f / designWidth * avaWidth);
+                if (AutoBase.contains(autobaseHeight, AutoBase.MARGIN_RIGHT))
+                {
+                    params.rightMargin = (int) (marginRight * 1.0f / designHeight * avaHeight);
+                } else
+                {
+                    params.rightMargin = (int) (marginRight * 1.0f / designWidth * avaWidth);
+                }
             }
             if (marginBottom != 0)
             {
-                params.bottomMargin = (int) (marginBottom * 1.0f / designHeight * avaHeight);
+                if (AutoBase.contains(autobaseWidth, AutoBase.MARGIN_BOTTOM))
+                {
+                    params.bottomMargin = (int) (marginBottom * 1.0f / designWidth * avaWidth);
+                } else
+                {
+                    params.bottomMargin = (int) (marginBottom * 1.0f / designHeight * avaHeight);
+                }
+
             }
             fillLayoutParams(params, avaWidth, avaHeight, designWidth, designHeight);
         }

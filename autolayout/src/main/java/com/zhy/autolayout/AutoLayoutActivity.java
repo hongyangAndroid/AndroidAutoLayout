@@ -16,6 +16,7 @@ public class AutoLayoutActivity extends AppCompatActivity
     private static final String LAYOUT_FRAMELAYOUT = "FrameLayout";
     private static final String LAYOUT_RELATIVELAYOUT = "RelativeLayout";
 
+
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs)
     {

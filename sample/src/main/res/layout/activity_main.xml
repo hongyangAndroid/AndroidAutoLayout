@@ -1,134 +1,150 @@
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#AAcccccc"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <RelativeLayout
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="86px"
-        android:layout_marginTop="26px"
-        android:background="#ffffffff"
-        >
-        <ImageView
-            android:id="@+id/id_tv_add"
-            android:layout_width="34px"
-            android:layout_height="34px"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="276px"
+        android:layout_height="match_parent"
+        android:background="#AAcccccc"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="86px"
             android:layout_marginTop="26px"
-            android:src="@mipmap/add"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="26px"
-            android:layout_toRightOf="@id/id_tv_add"
-            android:text="新增旅客"
-            android:textColor="#1fb6c4"
-            android:textSize="32px"
-            />
-    </RelativeLayout>
+            android:background="#ffffffff"
+            >
+            <ImageView
+                android:id="@+id/id_tv_add"
+                android:layout_width="34px"
+                android:layout_height="34px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="276px"
+                android:layout_marginTop="26px"
+                android:src="@mipmap/add"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="26px"
+                android:layout_toRightOf="@id/id_tv_add"
+                android:text="新增旅客"
+                android:textColor="#1fb6c4"
+                android:textSize="32px"
+                />
+        </RelativeLayout>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="108px"
-        android:layout_marginTop="26px"
-        android:background="#ffffffff">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="22px"
-            android:layout_marginTop="16px"
-            android:text="王大炮 WANG.DAPAO"
-            android:textColor="#333"
-            android:textSize="28px"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="16px"
-            android:layout_marginLeft="22px"
-            android:text="护照：G50786449"
-            android:textColor="#999"
-            android:textSize="26px"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:layout_marginTop="26px"
+            android:background="#ffffffff">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22px"
+                android:layout_marginTop="16px"
+                android:text="王大炮 WANG.DAPAO"
+                android:textColor="#333"
+                android:textSize="28px"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="16px"
+                android:layout_marginLeft="22px"
+                android:text="护照：G50786449"
+                android:textColor="#999"
+                android:textSize="26px"
+                />
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="108px"
-        android:layout_marginTop="26px"
-        android:background="#ffffffff"
-        >
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:layout_marginTop="26px"
+            android:background="#ffffffff"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="22px"
-            android:layout_marginTop="16px"
-            android:text="王大炮 WANG.DAPAO"
-            android:textColor="#333"
-            android:textSize="28px"
-            />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="16px"
-            android:layout_marginLeft="22px"
-            android:text="护照：G50786449"
-            android:textColor="#999"
-            android:textSize="26px"
-            />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="108px"
-        android:layout_marginTop="26px"
-        android:background="#ffffffff"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="22px"
-            android:layout_marginTop="16px"
-            android:text="王大炮 WANG.DAPAO"
-            android:textColor="#333"
-            android:textSize="28px"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22px"
+                android:layout_marginTop="16px"
+                android:text="王大炮 WANG.DAPAO"
+                android:textColor="#333"
+                android:textSize="28px"
+                />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="16px"
-            android:layout_marginLeft="22px"
-            android:text="护照：G50786449"
-            android:textColor="#999"
-            android:textSize="26px"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="16px"
+                android:layout_marginLeft="22px"
+                android:text="护照：G50786449"
+                android:textColor="#999"
+                android:textSize="26px"
+                />
 
-    </RelativeLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
 
-    <include
-        layout="@layout/include_test"
-        >
-    </include>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:layout_marginTop="26px"
+            android:background="#ffffffff"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22px"
+                android:layout_marginTop="16px"
+                android:text="王大炮 WANG.DAPAO"
+                android:textColor="#333"
+                android:textSize="28px"
+                />
 
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="16px"
+                android:layout_marginLeft="22px"
+                android:text="护照：G50786449"
+                android:textColor="#999"
+                android:textSize="26px"
+                />
+
+        </RelativeLayout>
+
+        <include
+            layout="@layout/include_test"
+            >
+        </include>
+
+
+    </LinearLayout>
+
+    <TextView android:layout_width="108px"
+              android:layout_height="108px"
+              android:layout_gravity="right|bottom"
+              android:layout_marginBottom="108px"
+              android:layout_marginRight="108px"
+              android:background="#ffff"
+              android:gravity="center"
+              android:text="正方形"
+              app:layout_auto_basewidth="height|marginBottom"
+        />
+
+</FrameLayout>

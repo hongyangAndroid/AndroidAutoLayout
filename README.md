@@ -51,32 +51,45 @@ dependencies {
 }
 ```
 
+也可以直接
+
+```
+dependencies {
+    compile 'com.zhy:autolayout:1.2.0'
+}
+```
+
+### 第一步：
+
 在你的项目的AndroidManifest中注明你的`设计稿`的尺寸。
 
 ```xml
-<meta-data android:name="design_width" android:value="768"></meta-data>
-<meta-data android:name="design_height" android:value="1280"></meta-data>
+<meta-data android:name="design_width" android:value="768">
+</meta-data>
+<meta-data android:name="design_height" android:value="1280">
+</meta-data>
     
 ```
 
-在你的Activity的onCreate里面写入：` AutoLayout.getInstance().auto(this, true);`
+### 第二步：
 
-```xml
-@Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        AutoLayout.getInstance().auto(this, true);
-    }
-```
+让你的Activity继承自`AutoLayoutActivity`.
 
-在布局文件中编写时，将：
+
+非常简单的两个步骤，你就可以开始愉快的编写布局了，详细可以参考sample。
+
+
+
+## 其他用法
+
+如果你不希望继承`AutoLayoutActivity`，可以在编写布局文件时，将
 
 * LinearLayout -> AutoLinearLayout
 * RelativeLayout -> AutoRelativeLayout
 * FrameLayout -> AutoFrameLayout
+
+这样也可以完成适配。
+
 
 ## 目前支持属性
 
@@ -89,9 +102,36 @@ dependencies {
 
 ## 注意事项
 
-* TextView的高度问题
+### 1、 指定设置的值参考宽度或者高度
+
+由于该库的特点，布局文件中宽高上的1px是不相等的，于是如果需要宽高保持一致的情况，布局中使用属性：
+
+ `app:layout_auto_basewidth="height"`，代表height上编写的像素值参考宽度。
+ 
+ `app:layout_auto_baseheight="width"`，代表width上编写的像素值参考高度。
+
+如果需要指定多个值参考宽度即：
+
+`app:layout_auto_basewidth="height|padding"`
+
+用|隔开，类似gravity的用法，取值为：
+
+* width,height
+* margin,marginLeft,marginTop,marginRight,marginBottom
+* padding,paddingLeft,paddingTop,paddingRight,paddingBottom
+* textSize.
+
+### 2、将状态栏区域作为内容区域
+
+如果某个Activity需要将状态栏区域作为实际的内容区域时，那么可用高度会变大，你所要做的只有一件事：让这个Activity实现`UseStatusBar`接口(仅仅作为标识左右，不需要实现任何方法)，当然你肯定要自己开启`windowTranslucentStatus`或者设置`FLAG_TRANSLUCENT_STATUS`。
+
+注意：仅仅是改变状态栏颜色，并不需要实现此接口，因为并没有实际上增加可用高度。
+
+
+### 3、TextView的高度问题
 
 设计稿一般只会标识一个字体的大小，比如你设置textSize="20px"，实际上TextView所占据的高度肯定大于20px，字的上下都会有一定的建议，所以一定要灵活去写字体的高度，比如对于text上下的margin可以选择尽可能小一点。或者选择别的约束条件去定位（比如上例，选择了marginBottom）
+
 
 
 

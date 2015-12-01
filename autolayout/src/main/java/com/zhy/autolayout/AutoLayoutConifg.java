@@ -15,7 +15,7 @@ import android.view.WindowManager;
 /**
  * Created by zhy on 15/11/18.
  */
-public class AutoLayout
+public class AutoLayoutConifg
 {
     private boolean mStatusBarAvailable;
     private static final String STATUS_BAR_HEIGHT_RES_NAME = "status_bar_height";
@@ -69,7 +69,6 @@ public class AutoLayout
         mAvailableWidth = outMetrics.widthPixels;
         mAvailaleHegiht = outMetrics.heightPixels;
         mAvailaleHegiht -= getStatusHeight(activity.getResources());
-
 
         if (ignoreStatusBar)
             return;
@@ -150,26 +149,6 @@ public class AutoLayout
     }
 
 
-    private AutoLayout()
-    {
-    }
-
-    private static volatile AutoLayout sInstance;
-
-    public static AutoLayout getInstance()
-    {
-        if (sInstance == null)
-        {
-            synchronized (AutoLayout.class)
-            {
-                if (sInstance == null)
-                {
-                    sInstance = new AutoLayout();
-                }
-            }
-        }
-        return sInstance;
-    }
 
 
 }

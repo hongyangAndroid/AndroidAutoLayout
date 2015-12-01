@@ -1,0 +1,94 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:orientation="horizontal">
+
+        <TextView android:layout_width="108px"
+                  android:layout_height="108px"
+                  android:layout_marginLeft="10px"
+                  android:layout_marginRight="20px"
+                  android:background="#44ff0000"
+                  android:gravity="center"
+                  android:text="我"
+                  app:layout_auto_basewidth="height"/>
+
+        <TextView android:layout_width="108px"
+                  android:layout_height="108px"
+                  android:layout_marginRight="20px"
+                  android:background="#44ff0000"
+                  android:gravity="center"
+                  android:text="们"
+                  app:layout_auto_basewidth="height"/>
+
+        <TextView android:layout_width="108px"
+                  android:layout_height="108px"
+                  android:layout_marginRight="20px"
+                  android:background="#44ff0000"
+                  android:gravity="center"
+                  android:text="是"
+                  app:layout_auto_basewidth="height"/>
+
+        <TextView android:layout_width="108px"
+                  android:layout_height="108px"
+                  android:layout_marginRight="20px"
+                  android:background="#44ff0000"
+                  android:gravity="center"
+                  android:text="正"
+                  app:layout_auto_basewidth="height"/>
+
+        <TextView android:layout_width="108px"
+                  android:layout_height="108px"
+                  android:layout_marginRight="20px"
+                  android:background="#44ff0000"
+                  android:gravity="center"
+                  android:text="方"
+                  app:layout_auto_basewidth="height"/>
+
+        <TextView android:layout_width="108px"
+                  android:layout_height="108px"
+                  android:layout_marginRight="10px"
+                  android:background="#44ff0000"
+                  android:gravity="center"
+                  android:text="形"
+                  app:layout_auto_basewidth="height"/>
+    </LinearLayout>
+
+
+    <FrameLayout android:layout_width="384px"
+                 android:layout_height="384px"
+                 android:layout_gravity="center"
+                 android:background="#44ff0000"
+                 android:padding="32px"
+                 app:layout_auto_basewidth="height|padding">
+
+
+        <FrameLayout android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:background="#867cff">
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_margin="32px"
+                      android:gravity="center"
+                      android:background="#e5ff1e"
+                      android:text="测试margin,padding等"
+                      app:layout_auto_basewidth="margin">
+
+
+            </TextView>
+
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+
+</FrameLayout>
