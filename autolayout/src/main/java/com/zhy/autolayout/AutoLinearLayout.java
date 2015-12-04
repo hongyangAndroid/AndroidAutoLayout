@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.zhy.autolayout.utils.AutoLayoutHelper;
+
 /**
  * Created by zhy on 15/6/30.
  */
@@ -45,7 +47,7 @@ public class AutoLinearLayout extends LinearLayout
     public static class LayoutParams extends LinearLayout.LayoutParams
             implements AutoLayoutHelper.AutoLayoutParams
     {
-        private AutoLayoutHelper.AutoLayoutInfo mAutoLayoutInfo;
+        private AutoLayoutInfo mAutoLayoutInfo;
 
         public LayoutParams(Context c, AttributeSet attrs)
         {
@@ -54,7 +56,7 @@ public class AutoLinearLayout extends LinearLayout
         }
 
         @Override
-        public AutoLayoutHelper.AutoLayoutInfo getPercentLayoutInfo()
+        public AutoLayoutInfo getAutoLayoutInfo()
         {
             return mAutoLayoutInfo;
         }

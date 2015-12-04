@@ -17,10 +17,11 @@
 package com.zhy.autolayout;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.zhy.autolayout.utils.AutoLayoutHelper;
 
 public class AutoFrameLayout extends FrameLayout
 {
@@ -64,7 +65,7 @@ public class AutoFrameLayout extends FrameLayout
     public static class LayoutParams extends FrameLayout.LayoutParams
             implements AutoLayoutHelper.AutoLayoutParams
     {
-        private AutoLayoutHelper.AutoLayoutInfo mAutoLayoutInfo;
+        private AutoLayoutInfo mAutoLayoutInfo;
 
         public LayoutParams(Context c, AttributeSet attrs)
         {
@@ -105,7 +106,7 @@ public class AutoFrameLayout extends FrameLayout
         }
 
         @Override
-        public AutoLayoutHelper.AutoLayoutInfo getPercentLayoutInfo()
+        public AutoLayoutInfo getAutoLayoutInfo()
         {
             return mAutoLayoutInfo;
         }

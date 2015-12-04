@@ -21,6 +21,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.zhy.autolayout.utils.AutoLayoutHelper;
+
 public class AutoRelativeLayout extends RelativeLayout
 {
     private final AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
@@ -45,6 +47,7 @@ public class AutoRelativeLayout extends RelativeLayout
     {
         return new LayoutParams(getContext(), attrs);
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
@@ -63,7 +66,7 @@ public class AutoRelativeLayout extends RelativeLayout
     public static class LayoutParams extends RelativeLayout.LayoutParams
             implements AutoLayoutHelper.AutoLayoutParams
     {
-        private AutoLayoutHelper.AutoLayoutInfo mAutoLayoutInfo;
+        private AutoLayoutInfo mAutoLayoutInfo;
 
         public LayoutParams(Context c, AttributeSet attrs)
         {
@@ -87,7 +90,7 @@ public class AutoRelativeLayout extends RelativeLayout
         }
 
         @Override
-        public AutoLayoutHelper.AutoLayoutInfo getPercentLayoutInfo()
+        public AutoLayoutInfo getAutoLayoutInfo()
         {
             return mAutoLayoutInfo;
         }
