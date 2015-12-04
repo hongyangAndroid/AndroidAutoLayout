@@ -8,7 +8,6 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.DisplayMetrics;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -17,6 +16,7 @@ import android.view.WindowManager;
  */
 public class AutoLayoutConifg
 {
+
     private boolean mStatusBarAvailable;
     private static final String STATUS_BAR_HEIGHT_RES_NAME = "status_bar_height";
 
@@ -24,7 +24,7 @@ public class AutoLayoutConifg
     DisplayMetrics outMetrics = new DisplayMetrics();
 
     private int mAvailableWidth;
-    private int mAvailaleHegiht;
+    private int mAvailableHeight;
 
 
     private static final String KEY_DESIGN_WIDTH = "design_width";
@@ -39,9 +39,9 @@ public class AutoLayoutConifg
         return mAvailableWidth;
     }
 
-    public int getAvailaleHeight()
+    public int getAvailableHeight()
     {
-        return mAvailaleHegiht;
+        return mAvailableHeight;
     }
 
     public int getDesignWidth()
@@ -54,33 +54,35 @@ public class AutoLayoutConifg
         return mDesignHeight;
     }
 
-    public void auto(Activity activity)
+    public void auto(Context context)
     {
-        auto(activity, true);
+        auto(context, true);
     }
 
 
-    public void auto(Activity activity, boolean ignoreStatusBar)
+    public void auto(Context context, boolean ignoreStatusBar)
     {
-        getMetaData(activity);
+        getMetaData(context);
 
-        WindowManager wm = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(outMetrics);
         mAvailableWidth = outMetrics.widthPixels;
-        mAvailaleHegiht = outMetrics.heightPixels;
-        mAvailaleHegiht -= getStatusHeight(activity.getResources());
+        mAvailableHeight = outMetrics.heightPixels;
+        mAvailableHeight -= getStatusHeight(context.getResources());
 
         if (ignoreStatusBar)
             return;
 
-        checkStatusBar(activity);
+        if (!(context instanceof Activity))
+            return;
+        checkStatusBar((Activity) context);
 
         if (mStatusBarAvailable)
         {
-            mAvailaleHegiht += getStatusHeight(activity.getResources());
+            mAvailableHeight += getStatusHeight(context.getResources());
         }
 
-        L.e("mAvailableWidth =" + mAvailableWidth + " , mAvailaleHegiht = " + mAvailaleHegiht);
+        L.e("mAvailableWidth =" + mAvailableWidth + " , mAvailableHeight = " + mAvailableHeight);
     }
 
     private void getMetaData(Context context)
@@ -109,7 +111,6 @@ public class AutoLayoutConifg
     private void checkStatusBar(Activity activity)
     {
         Window win = activity.getWindow();
-        ViewGroup decorViewGroup = (ViewGroup) win.getDecorView();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
         {
@@ -147,7 +148,6 @@ public class AutoLayoutConifg
         }
         return result;
     }
-
 
 
 

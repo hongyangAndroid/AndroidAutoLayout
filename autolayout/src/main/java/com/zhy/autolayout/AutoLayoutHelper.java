@@ -16,7 +16,6 @@
 
 package com.zhy.autolayout;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -64,22 +63,34 @@ public class AutoLayoutHelper
     private static final String VAL_WRAP_CONTENT = "-2";
     private static final String VAL_MATCH_PARENT = "-1";
 
+
     /**
      * TODO  move to other place
      */
-    private AutoLayoutConifg mAutoLayout;
+    private static AutoLayoutConifg mAutoLayoutConifg;
 
     public AutoLayoutHelper(ViewGroup host)
     {
         mHost = host;
-        mAutoLayout = new AutoLayoutConifg();
+
+        if (mAutoLayoutConifg == null)
+        {
+            initAutoLayoutConfig(host);
+        }
+
+
+    }
+
+    private void initAutoLayoutConfig(ViewGroup host)
+    {
+        mAutoLayoutConifg = new AutoLayoutConifg();
 
         boolean ignoreStatusBar = true;
         if (host.getContext() instanceof UseStatusBar)
         {
             ignoreStatusBar = false;
         }
-        mAutoLayout.auto((Activity) host.getContext(), ignoreStatusBar);
+        mAutoLayoutConifg.auto(host.getContext(), ignoreStatusBar);
     }
 
 
@@ -193,23 +204,23 @@ public class AutoLayoutHelper
 
     private int getAvailableWidth()
     {
-        return mAutoLayout.getAvailableWidth();
+        return mAutoLayoutConifg.getAvailableWidth();
     }
 
     private int getAvailableHeight()
     {
-        return mAutoLayout.getAvailaleHeight();
+        return mAutoLayoutConifg.getAvailableHeight();
 
     }
 
     private int getDesignWidth()
     {
-        return mAutoLayout.getDesignWidth();
+        return mAutoLayoutConifg.getDesignWidth();
     }
 
     private int getDesignHeight()
     {
-        return mAutoLayout.getDesignHeight();
+        return mAutoLayoutConifg.getDesignHeight();
     }
 
 
