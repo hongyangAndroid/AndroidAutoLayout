@@ -14,7 +14,6 @@ public abstract class AutoAttr
     protected int baseWidth;
     protected int baseHeight;
 
-
     public AutoAttr(int pxVal, int baseWidth, int baseHeight)
     {
         this.pxVal = pxVal;
@@ -24,6 +23,7 @@ public abstract class AutoAttr
 
     public void apply(View view)
     {
+
         int val;
         if (useDefault())
         {
@@ -56,7 +56,7 @@ public abstract class AutoAttr
 
     protected boolean useDefault()
     {
-        return contains(baseHeight, attrVal()) || contains(baseWidth, attrVal());
+        return !contains(baseHeight, attrVal()) || !contains(baseWidth, attrVal());
     }
 
     protected boolean contains(int baseVal, int flag)
