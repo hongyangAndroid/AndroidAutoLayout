@@ -19,7 +19,6 @@
             android:layout_marginRight="20px"
             android:background="#44ff0000"
             android:gravity="center"
-            android:tag="auto"
             android:text="我"
             app:layout_auto_basewidth="height"/>
 

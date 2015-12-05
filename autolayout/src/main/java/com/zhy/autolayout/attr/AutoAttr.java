@@ -3,6 +3,7 @@ package com.zhy.autolayout.attr;
 import android.view.View;
 
 import com.zhy.autolayout.utils.AutoUtils;
+import com.zhy.autolayout.utils.L;
 
 
 /**
@@ -24,16 +25,34 @@ public abstract class AutoAttr
     public void apply(View view)
     {
 
+        boolean log = view.getTag() != null && view.getTag().toString().equals("auto");
+
+        if (log)
+        {
+            L.e(" pxVal = " + pxVal +" ," + this.getClass().getSimpleName());
+        }
         int val;
         if (useDefault())
         {
             val = defaultBaseWidth() ? getPercentWidthSize() : getPercentHeightSize();
+            if (log)
+            {
+                L.e(" useDefault val= " + val);
+            }
         } else if (baseWidth())
         {
             val = getPercentWidthSize();
+            if (log)
+            {
+                L.e(" baseWidth val= " + val);
+            }
         } else
         {
             val = getPercentHeightSize();
+            if (log)
+            {
+                L.e(" baseHeight val= " + val);
+            }
         }
         execute(view, val);
     }
@@ -56,7 +75,7 @@ public abstract class AutoAttr
 
     protected boolean useDefault()
     {
-        return !contains(baseHeight, attrVal()) || !contains(baseWidth, attrVal());
+        return !contains(baseHeight, attrVal()) && !contains(baseWidth, attrVal());
     }
 
     protected boolean contains(int baseVal, int flag)

@@ -55,7 +55,7 @@ dependencies {
 
 ```
 dependencies {
-    compile 'com.zhy:autolayout:1.2.1'
+    compile 'com.zhy:autolayout:1.3.0'
 }
 ```
 
