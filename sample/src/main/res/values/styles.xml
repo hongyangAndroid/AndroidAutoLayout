@@ -8,4 +8,12 @@
     <style name="AppTheme" parent="@style/BaseAppTheme">
     </style>
 
+
+    <style name="immersion_status">
+        <item name="android:clipToPadding">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
 </resources>

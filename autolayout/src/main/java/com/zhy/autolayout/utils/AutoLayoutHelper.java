@@ -121,6 +121,9 @@ public class AutoLayoutHelper
     public static AutoLayoutInfo getAutoLayoutInfo(Context context,
                                                    AttributeSet attrs)
     {
+
+        AutoLayoutConifg.getInstance().checkParams();
+
         AutoLayoutInfo info = new AutoLayoutInfo();
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoLayout_Layout);

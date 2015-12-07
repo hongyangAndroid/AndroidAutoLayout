@@ -30,6 +30,16 @@ public class AutoLayoutConifg
     {
     }
 
+    public void checkParams()
+    {
+        if(mDesignHeight <=0 || mDesignWidth <= 0 )
+        {
+            throw new RuntimeException(
+                    "you must set " + KEY_DESIGN_WIDTH + " and " + KEY_DESIGN_HEIGHT + "  in your manifest file.");
+        }
+    }
+
+
     public static AutoLayoutConifg getInstance()
     {
         return sIntance;

@@ -16,19 +16,19 @@ so,看下用法：
 
 你没有看错，拿到设计稿，在布局文件里面直接填写对应的px即可，px:这里的px并非是Google不建议使用的px，在内部会进行转化处理。
 
-看下不同分辨率下的效果：
+ok，拿一些实际项目的页面，看下不同分辨率下的效果：
 
-768*1280,Andriod 4.4.4
+左为：768 * 1280 ; 右为：1080 * 1920
+
+<img src="preview/preview_01.png" width="800px"/>
+
+<img src="preview/preview_02.png" width="800px"/>
+
+<img src="preview/preview_03.png" width="800px"/>
 
 
-<img src="autolayout_03.png" width="320px"/>
 
-480*800,Android 2.3.7
-
-<img src="autolayout_04.png" width="320px"/>
-
-
-上述两个机器的分辨率差距相当大了，但是完美实现了适配，最为重要的是：
+上述两个机器的分辨率差距挺大了，但是完美实现了适配，最为重要的是：
 
 * 再也不用拿着设计稿去想这控件的宽高到底取多少dp
 * 再也不用去为多个屏幕去写多个dimens
@@ -55,9 +55,13 @@ dependencies {
 
 ```
 dependencies {
-    compile 'com.zhy:autolayout:1.3.0'
+    compile 'com.zhy:autolayout:1.3.2'
 }
 ```
+
+* Eclipse
+
+下载[AutoLayoutDemoForEclipse.zip](AutoLayoutDemoForEclipse.zip)，导入到eclipse中即可。
 
 ### 第一步：
 
@@ -102,7 +106,35 @@ dependencies {
 
 ## 注意事项
 
-### 1、 指定设置的值参考宽度或者高度
+### ListView、RecyclerView类的Item的适配
+
+对于ListView这类控件的item，默认跟局部写“px”进行适配是无效的，因为外层非AutoXXXLayout，而是ListView。但是，不用怕，一行代码就可以支持了：
+
+```java
+@Override
+public View getView(int position, View convertView, ViewGroup parent)
+{
+    ViewHolder holder = null;
+    if (convertView == null)
+    {
+        holder = new ViewHolder();
+        convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
+        convertView.setTag(holder);
+        //对于listview，注意添加这一行，即可在item上使用高度
+        AutoUtils.autoSize(convertView);
+    } else
+    {
+        holder = (ViewHolder) convertView.getTag();
+    }
+
+    return convertView;
+}
+```
+
+注意` AutoUtils.autoSize(convertView);`这行代码的位置即可。demo中也有相关实例。
+
+
+### 指定设置的值参考宽度或者高度
 
 由于该库的特点，布局文件中宽高上的1px是不相等的，于是如果需要宽高保持一致的情况，布局中使用属性：
 
@@ -121,7 +153,7 @@ dependencies {
 * padding,paddingLeft,paddingTop,paddingRight,paddingBottom
 * textSize.
 
-### 2、TextView的高度问题
+### TextView的高度问题
 
 设计稿一般只会标识一个字体的大小，比如你设置textSize="20px"，实际上TextView所占据的高度肯定大于20px，字的上下都会有一定的建议，所以一定要灵活去写字体的高度，比如对于text上下的margin可以选择尽可能小一点。或者选择别的约束条件去定位（比如上例，选择了marginBottom）
 

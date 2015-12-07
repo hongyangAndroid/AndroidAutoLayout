@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.zhy.autolayout.AutoLayoutActivity;
+import com.zhy.sample.fragment.SimpleFragment;
 
 public class CategoryActivity extends AutoLayoutActivity
 {
@@ -33,11 +34,6 @@ public class CategoryActivity extends AutoLayoutActivity
             @Override
             public Fragment getItem(int i)
             {
-                switch (i)
-                {
-                    case 1:
-                        return new SquareFragment();
-                }
                 return new SimpleFragment();
             }
 

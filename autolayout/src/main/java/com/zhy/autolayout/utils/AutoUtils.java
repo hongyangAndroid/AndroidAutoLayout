@@ -3,6 +3,7 @@ package com.zhy.autolayout.utils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhy.autolayout.R;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 /**
@@ -25,11 +26,16 @@ public class AutoUtils
 
     public static void autoMargin(View view)
     {
-
         if (!(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
             return;
 
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+        if(lp == null)return ;
+
+        Object tag = view.getTag(R.id.id_tag_autolayout_margin);
+        if (tag != null) return;
+        view.setTag(R.id.id_tag_autolayout_margin, "Just Identify");
+
         lp.leftMargin = getPercentWidthSize(lp.leftMargin);
         lp.topMargin = getPercentHeightSize(lp.topMargin);
         lp.rightMargin = getPercentWidthSize(lp.rightMargin);
@@ -39,6 +45,10 @@ public class AutoUtils
 
     public static void autoPadding(View view)
     {
+        Object tag = view.getTag(R.id.id_tag_autolayout_padding);
+        if (tag != null) return;
+        view.setTag(R.id.id_tag_autolayout_padding, "Just Identify");
+
         int l = view.getPaddingLeft();
         int t = view.getPaddingTop();
         int r = view.getPaddingRight();
@@ -56,14 +66,29 @@ public class AutoUtils
     {
         ViewGroup.LayoutParams lp = view.getLayoutParams();
 
-        int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
-        int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
+        if (lp == null) return;
 
-        int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
-        int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+        Object tag = view.getTag(R.id.id_tag_autolayout_size);
+        if (tag != null) return;
 
-        lp.width = (int) (lp.width * 1.0f / designWidth * screenWidth);
-        lp.height = (int) (lp.height * 1.0f / designHeight / screenHeight);
+        view.setTag(R.id.id_tag_autolayout_size, "Just Identify");
+
+        if(lp.width>0)
+        {
+            int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
+            int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
+            lp.width = (int) (lp.width * 1.0f / designWidth * screenWidth);
+        }
+
+        if(lp.height>0)
+        {
+            int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
+            int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+            lp.height = (int) (lp.height * 1.0f / designHeight * screenHeight);
+        }
+
+
+
 
     }
 

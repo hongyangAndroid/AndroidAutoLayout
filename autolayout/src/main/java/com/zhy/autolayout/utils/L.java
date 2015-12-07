@@ -12,7 +12,7 @@ public class L
 
     public static void e(String msg)
     {
-        if (true)
+        if (debug)
         {
             Log.e(TAG, msg);
         }
