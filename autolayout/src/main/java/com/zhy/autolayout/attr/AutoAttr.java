@@ -29,7 +29,7 @@ public abstract class AutoAttr
 
         if (log)
         {
-            L.e(" pxVal = " + pxVal +" ," + this.getClass().getSimpleName());
+            L.e(" pxVal = " + pxVal + " ," + this.getClass().getSimpleName());
         }
         int val;
         if (useDefault())
@@ -54,6 +54,8 @@ public abstract class AutoAttr
                 L.e(" baseHeight val= " + val);
             }
         }
+
+        val = Math.max(val, 1);//for very thin divider
         execute(view, val);
     }
 
