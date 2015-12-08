@@ -100,6 +100,8 @@ public class AutoLayoutHelper
 
     public void adjustChildren()
     {
+        AutoLayoutConifg.getInstance().checkParams();
+
         for (int i = 0, n = mHost.getChildCount(); i < n; i++)
         {
             View view = mHost.getChildAt(i);
@@ -121,8 +123,6 @@ public class AutoLayoutHelper
     public static AutoLayoutInfo getAutoLayoutInfo(Context context,
                                                    AttributeSet attrs)
     {
-
-        AutoLayoutConifg.getInstance().checkParams();
 
         AutoLayoutInfo info = new AutoLayoutInfo();
 

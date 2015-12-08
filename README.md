@@ -55,7 +55,7 @@ dependencies {
 
 ```
 dependencies {
-    compile 'com.zhy:autolayout:1.3.3'
+    compile 'com.zhy:autolayout:1.3.4'
 }
 ```
 
@@ -102,6 +102,27 @@ dependencies {
 * layout_margin(left,top,right,bottom)
 * pading(left,top,right,bottom)
 * textSize
+
+
+## 预览
+
+大家都知道，写布局文件的时候，不能实时的去预览效果，那么体验真的是非常的不好，也在很大程度上降低开发效率，所以下面教大家如何用好，用对PreView（针对该库）。
+
+首先，你要记得你设计稿的尺寸，比如 `768 * 1280`
+
+然后在你的PreView面板，选择于设计图分辨率一致的设备：
+
+
+<img src="autolayout_07.png" width="480px"/>
+
+然后你就可以看到`最为精确的`预览了：
+
+<img src="autolayout_06.png" width="480px"/>
+
+两个注意事项：
+
+1. 你们UI给的设计图的尺寸并非是主流的设计图，该尺寸没找到，你可以自己去新建一个设备。
+2. 不要在PreView中去查看所有分辨率下的显示，是看不出来适配效果的，因为有些计算是动态的。
 
 
 ## 注意事项
