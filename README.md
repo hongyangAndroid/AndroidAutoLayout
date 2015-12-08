@@ -39,7 +39,7 @@ ok，拿一些实际项目的页面，看下不同分辨率下的效果：
 
 还有很多好处，比如上面的Item里面元素比较多，如果标识的比较全面，一个FrameLayout，里面的View填写各种marginLeft,marginTop就能完美实现，几乎不需要嵌套了。
 
-## 用法
+## 引入
 
 * Android Studio
 
@@ -62,6 +62,8 @@ dependencies {
 * Eclipse
 
 下载[AutoLayoutDemoForEclipse.zip](AutoLayoutDemoForEclipse.zip)，导入到eclipse中即可。
+
+## 用法
 
 ### 第一步：
 
@@ -123,6 +125,62 @@ dependencies {
 
 1. 你们UI给的设计图的尺寸并非是主流的设计图，该尺寸没找到，你可以自己去新建一个设备。
 2. 不要在PreView中去查看所有分辨率下的显示，是看不出来适配效果的，因为有些计算是动态的。
+
+## 扩展
+
+对于其他继承系统的FrameLayout、LinearLayout、RelativeLayout的控件，比如`CardView`，如果希望再其内部直接支持"px"百分比化，可以自己扩展，扩展方式为下面的代码，也可参考[issue#21](https://github.com/hongyangAndroid/AndroidAutoLayout/issues/21)：
+
+```
+package com.zhy.sample.view;
+
+import android.content.Context;
+import android.support.v7.widget.CardView;
+import android.util.AttributeSet;
+
+import com.zhy.autolayout.AutoFrameLayout;
+import com.zhy.autolayout.utils.AutoLayoutHelper;
+
+/**
+ * Created by zhy on 15/12/8.
+ */
+public class AutoCardView extends CardView
+{
+    private final AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
+
+    public AutoCardView(Context context)
+    {
+        super(context);
+    }
+
+    public AutoCardView(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+    }
+
+    public AutoCardView(Context context, AttributeSet attrs, int defStyleAttr)
+    {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public AutoFrameLayout.LayoutParams generateLayoutParams(AttributeSet attrs)
+    {
+        return new AutoFrameLayout.LayoutParams(getContext(), attrs);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
+        if (!isInEditMode())
+        {
+            mHelper.adjustChildren();
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+
+}
+```
 
 
 ## 注意事项
