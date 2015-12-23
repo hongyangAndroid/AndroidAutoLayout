@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
 import android.view.WindowManager;
 
 import com.zhy.autolayout.AutoLayoutActivity;
@@ -27,6 +28,8 @@ public class MainActivity extends AutoLayoutActivity
 		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setImmersionStatus();
 		setContentView(R.layout.activity_main);
+
+
 		initView();
 		initDatas();
 	}
@@ -51,6 +54,15 @@ public class MainActivity extends AutoLayoutActivity
 	private void initView() {
 		mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_main, menu);
+		return true;
+	}
+
 
 	public class MyAdapter extends FragmentPagerAdapter {
 		ArrayList<Fragment> tabs = null;

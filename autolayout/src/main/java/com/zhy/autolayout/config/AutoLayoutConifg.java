@@ -25,6 +25,8 @@ public class AutoLayoutConifg
     private int mDesignWidth;
     private int mDesignHeight;
 
+    private boolean useDeviceSize;
+
 
     private AutoLayoutConifg()
     {
@@ -32,11 +34,17 @@ public class AutoLayoutConifg
 
     public void checkParams()
     {
-        if(mDesignHeight <=0 || mDesignWidth <= 0 )
+        if (mDesignHeight <= 0 || mDesignWidth <= 0)
         {
             throw new RuntimeException(
                     "you must set " + KEY_DESIGN_WIDTH + " and " + KEY_DESIGN_HEIGHT + "  in your manifest file.");
         }
+    }
+
+    public AutoLayoutConifg useDeviceSize()
+    {
+        useDeviceSize = true;
+        return this;
     }
 
 
@@ -71,7 +79,7 @@ public class AutoLayoutConifg
     {
         getMetaData(context);
 
-        int[] screenSize = ScreenUtils.getScreenSize(context);
+        int[] screenSize = ScreenUtils.getScreenSize(context, useDeviceSize);
         mScreenWidth = screenSize[0];
         mScreenHeight = screenSize[1];
         L.e(" screenWidth =" + mScreenWidth + " ,screenHeight = " + mScreenHeight);

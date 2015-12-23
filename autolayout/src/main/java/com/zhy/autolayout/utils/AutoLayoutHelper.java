@@ -19,6 +19,7 @@ package com.zhy.autolayout.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -139,9 +140,10 @@ public class AutoLayoutHelper
         for (int i = 0; i < n; i++)
         {
             int index = array.getIndex(i);
-            String val = array.getString(index);
+//            String val = array.getString(index);
+//            if (!isPxVal(val)) continue;
 
-            if (!isPxVal(val)) continue;
+            if (!isPxVal(array.peekValue(index))) continue;
 
             int pxVal = 0;
             try
@@ -198,6 +200,21 @@ public class AutoLayoutHelper
         array.recycle();
         L.e(" getAutoLayoutInfo " + info.toString());
         return info;
+    }
+
+    private static boolean isPxVal(TypedValue val)
+    {
+        if (val != null && val.type == TypedValue.TYPE_DIMENSION &&
+                getComplexUnit(val.data) == TypedValue.COMPLEX_UNIT_PX)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private static int getComplexUnit(int data)
+    {
+        return TypedValue.COMPLEX_UNIT_MASK & (data >> TypedValue.COMPLEX_UNIT_SHIFT);
     }
 
     private static boolean isPxVal(String val)

@@ -38,4 +38,9 @@
     </declare-styleable>
 
 
+    <declare-styleable name="MetroLayout">
+        <attr name="metro_divider" format="dimension"></attr>
+    </declare-styleable>
+
+
 </resources>

@@ -1,0 +1,72 @@
+<com.zhy.autolayout.widget.MetroLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:metro_divider="8px"
+    >
+
+    <TextView
+        android:layout_width="380px"
+        android:layout_height="328px"
+        android:gravity="center"
+        android:text="1"/>
+
+    <TextView
+        android:layout_width="380px"
+        android:layout_height="160px"
+        android:gravity="center"
+        android:text="2"/>
+
+
+    <TextView
+        android:layout_width="380px"
+        android:layout_height="160px"
+        android:gravity="center"
+        android:text="3"/>
+
+    <TextView
+        android:layout_width="186px"
+        android:layout_height="160px"
+        android:gravity="center"
+        android:text="4"/>
+
+    <TextView
+        android:layout_width="186px"
+        android:layout_height="160px"
+        android:gravity="center"
+        android:text="5"/>
+
+    <TextView
+        android:layout_width="124px"
+        android:layout_height="328px"
+        android:gravity="center"
+        android:text="6"/>
+
+    <TextView
+        android:layout_width="248px"
+        android:layout_height="104px"
+        android:gravity="center"
+        android:text="7"/>
+
+    <TextView
+        android:layout_width="248px"
+        android:layout_height="104px"
+        android:gravity="center"
+        android:text="8"/>
+
+    <TextView
+        android:layout_width="380px"
+        android:layout_height="160px"
+        android:gravity="center"
+        android:text="9"/>
+
+    <TextView
+        android:layout_width="248px"
+        android:layout_height="104px"
+        android:gravity="center"
+        android:text="10"/>
+
+
+</com.zhy.autolayout.widget.MetroLayout>

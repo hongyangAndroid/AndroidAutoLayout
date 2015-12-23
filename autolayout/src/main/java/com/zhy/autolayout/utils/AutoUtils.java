@@ -30,7 +30,7 @@ public class AutoUtils
             return;
 
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-        if(lp == null)return ;
+        if (lp == null) return;
 
         Object tag = view.getTag(R.id.id_tag_autolayout_margin);
         if (tag != null) return;
@@ -73,23 +73,19 @@ public class AutoUtils
 
         view.setTag(R.id.id_tag_autolayout_size, "Just Identify");
 
-        if(lp.width>0)
+        if (lp.width > 0)
         {
             int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
             int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
             lp.width = (int) (lp.width * 1.0f / designWidth * screenWidth);
         }
 
-        if(lp.height>0)
+        if (lp.height > 0)
         {
             int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
             int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
             lp.height = (int) (lp.height * 1.0f / designHeight * screenHeight);
         }
-
-
-
-
     }
 
     public static int getPercentWidthSize(int val)
@@ -98,6 +94,38 @@ public class AutoUtils
         int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
 
         return (int) (val * 1.0f / designWidth * screenWidth);
+    }
+
+
+    public static int getPercentWidthSizeBigger(int val)
+    {
+        int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
+        int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
+
+        int res = val * screenWidth;
+        if (res % designWidth == 0)
+        {
+            return res / designWidth;
+        } else
+        {
+            return res / designWidth + 1;
+        }
+
+    }
+
+    public static int getPercentHeightSizeBigger(int val)
+    {
+        int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
+        int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+
+        int res = val * screenHeight;
+        if (res % designHeight == 0)
+        {
+            return res / designHeight;
+        } else
+        {
+            return res / designHeight + 1;
+        }
     }
 
     public static int getPercentHeightSize(int val)

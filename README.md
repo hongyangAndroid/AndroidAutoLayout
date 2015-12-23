@@ -55,7 +55,7 @@ dependencies {
 
 ```
 dependencies {
-    compile 'com.zhy:autolayout:1.3.4'
+    compile 'com.zhy:autolayout:1.3.5'
 }
 ```
 
@@ -97,6 +97,9 @@ dependencies {
 这样也可以完成适配。
 
 
+
+
+
 ## 目前支持属性
 
 * layout_width
@@ -104,6 +107,26 @@ dependencies {
 * layout_margin(left,top,right,bottom)
 * pading(left,top,right,bottom)
 * textSize
+
+
+## 配置
+
+默认使用的宽度是设备的可用高度，也就是不包括状态栏和底部的操作栏的，如果你希望拿设备的物理高度进行百分比化：
+
+可以在Application的onCreate方法中进行设置:
+
+```java
+public class UseDeviceSizeApplication extends Application
+{
+    @Override
+    public void onCreate()
+    {
+        super.onCreate();
+        AutoLayoutConifg.getInstance().useDeviceSize();
+    }
+}
+
+```
 
 
 ## 预览

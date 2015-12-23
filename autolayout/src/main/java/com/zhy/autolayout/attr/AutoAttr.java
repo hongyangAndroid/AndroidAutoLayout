@@ -61,12 +61,12 @@ public abstract class AutoAttr
 
     protected int getPercentWidthSize()
     {
-        return AutoUtils.getPercentWidthSize(pxVal);
+        return AutoUtils.getPercentWidthSizeBigger(pxVal);
     }
 
     protected int getPercentHeightSize()
     {
-        return AutoUtils.getPercentHeightSize(pxVal);
+        return AutoUtils.getPercentHeightSizeBigger(pxVal);
     }
 
 

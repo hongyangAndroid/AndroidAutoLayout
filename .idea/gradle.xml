@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/autolayout" />
             <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/widgetsample" />
           </set>
         </option>
       </GradleProjectSettings>

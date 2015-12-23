@@ -13,7 +13,9 @@ import android.view.WindowManager;
  */
 public class ScreenUtils
 {
-    public static int[] getScreenSize(Context context)
+
+
+    public static int[] getScreenSize(Context context, boolean useDeviceSize)
     {
 
         int[] size = new int[2];
@@ -25,6 +27,14 @@ public class ScreenUtils
 // since SDK_INT = 1;
         int widthPixels = metrics.widthPixels;
         int heightPixels = metrics.heightPixels;
+
+        if (!useDeviceSize)
+        {
+            size[0] = widthPixels;
+            size[1] = heightPixels;
+            return size;
+        }
+
 // includes window decorations (statusbar bar/menu bar)
         if (Build.VERSION.SDK_INT >= 14 && Build.VERSION.SDK_INT < 17)
             try
