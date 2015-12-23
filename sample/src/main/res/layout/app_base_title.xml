@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_parentlayout"
+    android:layout_width="match_parent"
+    android:layout_height="130px"
+    android:background="#ff6600" >
+
+    <TextView
+        android:id="@+id/title_lefttextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:text="左侧文字"
+        android:textColor="@android:color/white"
+        android:textSize="52px"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/title_leftimageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/login_fanhui" />
+
+    <TextView
+        android:id="@+id/title_centertextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="中间文字"
+        android:textColor="@android:color/white"
+        android:textSize="51px" />
+
+    <ImageView
+        android:id="@+id/title_centerimageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_launcher"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/title_righttextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:text="右侧文字"
+        android:textColor="@android:color/white"
+        android:textSize="52px"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/title_rightimageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher"
+        android:visibility="gone" />
+
+</RelativeLayout>

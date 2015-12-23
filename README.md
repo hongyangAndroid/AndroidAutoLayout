@@ -16,19 +16,19 @@ so,看下用法：
 
 你没有看错，拿到设计稿，在布局文件里面直接填写对应的px即可，px:这里的px并非是Google不建议使用的px，在内部会进行转化处理。
 
-看下不同分辨率下的效果：
+ok，拿一些实际项目的页面，看下不同分辨率下的效果：
 
-768*1280,Andriod 4.4.4
+左为：768 * 1280 ; 右为：1080 * 1920
+
+<img src="preview/preview_01.png" width="800px"/>
+
+<img src="preview/preview_02.png" width="800px"/>
+
+<img src="preview/preview_03.png" width="800px"/>
 
 
-<img src="autolayout_03.png" width="320px"/>
 
-480*800,Android 2.3.7
-
-<img src="autolayout_04.png" width="320px"/>
-
-
-上述两个机器的分辨率差距相当大了，但是完美实现了适配，最为重要的是：
+上述两个机器的分辨率差距挺大了，但是完美实现了适配，最为重要的是：
 
 * 再也不用拿着设计稿去想这控件的宽高到底取多少dp
 * 再也不用去为多个屏幕去写多个dimens
@@ -39,7 +39,7 @@ so,看下用法：
 
 还有很多好处，比如上面的Item里面元素比较多，如果标识的比较全面，一个FrameLayout，里面的View填写各种marginLeft,marginTop就能完美实现，几乎不需要嵌套了。
 
-## 用法
+## 引入
 
 * Android Studio
 
@@ -55,9 +55,15 @@ dependencies {
 
 ```
 dependencies {
-    compile 'com.zhy:autolayout:1.2.0'
+    compile 'com.zhy:autolayout:1.3.4'
 }
 ```
+
+* Eclipse
+
+下载[AutoLayoutDemoForEclipse.zip](AutoLayoutDemoForEclipse.zip)，导入到eclipse中即可。
+
+## 用法
 
 ### 第一步：
 
@@ -100,9 +106,114 @@ dependencies {
 * textSize
 
 
+## 预览
+
+大家都知道，写布局文件的时候，不能实时的去预览效果，那么体验真的是非常的不好，也在很大程度上降低开发效率，所以下面教大家如何用好，用对PreView（针对该库）。
+
+首先，你要记得你设计稿的尺寸，比如 `768 * 1280`
+
+然后在你的PreView面板，选择于设计图分辨率一致的设备：
+
+
+<img src="autolayout_07.png" width="480px"/>
+
+然后你就可以看到`最为精确的`预览了：
+
+<img src="autolayout_06.png" width="480px"/>
+
+两个注意事项：
+
+1. 你们UI给的设计图的尺寸并非是主流的设计图，该尺寸没找到，你可以自己去新建一个设备。
+2. 不要在PreView中去查看所有分辨率下的显示，是看不出来适配效果的，因为有些计算是动态的。
+
+## 扩展
+
+对于其他继承系统的FrameLayout、LinearLayout、RelativeLayout的控件，比如`CardView`，如果希望再其内部直接支持"px"百分比化，可以自己扩展，扩展方式为下面的代码，也可参考[issue#21](https://github.com/hongyangAndroid/AndroidAutoLayout/issues/21)：
+
+```
+package com.zhy.sample.view;
+
+import android.content.Context;
+import android.support.v7.widget.CardView;
+import android.util.AttributeSet;
+
+import com.zhy.autolayout.AutoFrameLayout;
+import com.zhy.autolayout.utils.AutoLayoutHelper;
+
+/**
+ * Created by zhy on 15/12/8.
+ */
+public class AutoCardView extends CardView
+{
+    private final AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
+
+    public AutoCardView(Context context)
+    {
+        super(context);
+    }
+
+    public AutoCardView(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+    }
+
+    public AutoCardView(Context context, AttributeSet attrs, int defStyleAttr)
+    {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public AutoFrameLayout.LayoutParams generateLayoutParams(AttributeSet attrs)
+    {
+        return new AutoFrameLayout.LayoutParams(getContext(), attrs);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
+        if (!isInEditMode())
+        {
+            mHelper.adjustChildren();
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+
+}
+```
+
+
 ## 注意事项
 
-### 1、 指定设置的值参考宽度或者高度
+### ListView、RecyclerView类的Item的适配
+
+对于ListView这类控件的item，默认跟局部写“px”进行适配是无效的，因为外层非AutoXXXLayout，而是ListView。但是，不用怕，一行代码就可以支持了：
+
+```java
+@Override
+public View getView(int position, View convertView, ViewGroup parent)
+{
+    ViewHolder holder = null;
+    if (convertView == null)
+    {
+        holder = new ViewHolder();
+        convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
+        convertView.setTag(holder);
+        //对于listview，注意添加这一行，即可在item上使用高度
+        AutoUtils.autoSize(convertView);
+    } else
+    {
+        holder = (ViewHolder) convertView.getTag();
+    }
+
+    return convertView;
+}
+```
+
+注意` AutoUtils.autoSize(convertView);`这行代码的位置即可。demo中也有相关实例。
+
+
+### 指定设置的值参考宽度或者高度
 
 由于该库的特点，布局文件中宽高上的1px是不相等的，于是如果需要宽高保持一致的情况，布局中使用属性：
 
@@ -121,21 +232,14 @@ dependencies {
 * padding,paddingLeft,paddingTop,paddingRight,paddingBottom
 * textSize.
 
-### 2、将状态栏区域作为内容区域
-
-如果某个Activity需要将状态栏区域作为实际的内容区域时，那么可用高度会变大，你所要做的只有一件事：让这个Activity实现`UseStatusBar`接口(仅仅作为标识左右，不需要实现任何方法)，当然你肯定要自己开启`windowTranslucentStatus`或者设置`FLAG_TRANSLUCENT_STATUS`。
-
-注意：仅仅是改变状态栏颜色，并不需要实现此接口，因为并没有实际上增加可用高度。
-
-
-### 3、TextView的高度问题
+### TextView的高度问题
 
 设计稿一般只会标识一个字体的大小，比如你设置textSize="20px"，实际上TextView所占据的高度肯定大于20px，字的上下都会有一定的建议，所以一定要灵活去写字体的高度，比如对于text上下的margin可以选择尽可能小一点。或者选择别的约束条件去定位（比如上例，选择了marginBottom）
 
+##TODO
 
-
-
-
+* 增加单个Activity横屏布局的支持（设计图必须是横屏的）
+* 完善demo(复杂的，简单的，ListView的各种)
 
 ## 其他信息
 

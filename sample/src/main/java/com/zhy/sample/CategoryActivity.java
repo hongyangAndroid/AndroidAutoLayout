@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.zhy.autolayout.AutoLayoutActivity;
-import com.zhy.autolayout.UseStatusBar;
+import com.zhy.sample.fragment.SimpleFragment;
 
-public class CategoryActivity extends AutoLayoutActivity implements UseStatusBar
+public class CategoryActivity extends AutoLayoutActivity
 {
 
     private TabLayout mTabLayout;
@@ -26,7 +26,6 @@ public class CategoryActivity extends AutoLayoutActivity implements UseStatusBar
         setContentView(R.layout.activity_category);
 
 
-
         mTabLayout = (TabLayout) findViewById(R.id.id_tablayout);
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
 
@@ -35,11 +34,6 @@ public class CategoryActivity extends AutoLayoutActivity implements UseStatusBar
             @Override
             public Fragment getItem(int i)
             {
-                switch (i)
-                {
-                    case 1:
-                        return new SquareFragment();
-                }
                 return new SimpleFragment();
             }
 
