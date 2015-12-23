@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhy.autolayout.R;
-import com.zhy.autolayout.config.AutoLayoutConifg;
+import com.zhy.autolayout.config.AutoLayoutConfig;
 
 /**
  * Created by zhy on 15/12/4.
@@ -75,15 +75,15 @@ public class AutoUtils
 
         if(lp.width>0)
         {
-            int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
-            int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
+            int screenWidth = AutoLayoutConfig.getInstance().getScreenWidth();
+            int designWidth = AutoLayoutConfig.getInstance().getDesignWidth();
             lp.width = (int) (lp.width * 1.0f / designWidth * screenWidth);
         }
 
         if(lp.height>0)
         {
-            int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
-            int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+            int screenHeight = AutoLayoutConfig.getInstance().getScreenHeight();
+            int designHeight = AutoLayoutConfig.getInstance().getDesignHeight();
             lp.height = (int) (lp.height * 1.0f / designHeight * screenHeight);
         }
 
@@ -94,16 +94,16 @@ public class AutoUtils
 
     public static int getPercentWidthSize(int val)
     {
-        int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
-        int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
+        int screenWidth = AutoLayoutConfig.getInstance().getScreenWidth();
+        int designWidth = AutoLayoutConfig.getInstance().getDesignWidth();
 
         return (int) (val * 1.0f / designWidth * screenWidth);
     }
 
     public static int getPercentHeightSize(int val)
     {
-        int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
-        int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+        int screenHeight = AutoLayoutConfig.getInstance().getScreenHeight();
+        int designHeight = AutoLayoutConfig.getInstance().getDesignHeight();
 
         return (int) (val * 1.0f / designHeight * screenHeight);
     }

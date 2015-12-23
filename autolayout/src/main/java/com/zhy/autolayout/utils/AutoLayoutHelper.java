@@ -19,6 +19,7 @@ package com.zhy.autolayout.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -37,7 +38,7 @@ import com.zhy.autolayout.attr.PaddingRightAttr;
 import com.zhy.autolayout.attr.PaddingTopAttr;
 import com.zhy.autolayout.attr.TextSizeAttr;
 import com.zhy.autolayout.attr.WidthAttr;
-import com.zhy.autolayout.config.AutoLayoutConifg;
+import com.zhy.autolayout.config.AutoLayoutConfig;
 
 public class AutoLayoutHelper
 {
@@ -78,13 +79,13 @@ public class AutoLayoutHelper
     /**
      * move to other place?
      */
-    private static AutoLayoutConifg mAutoLayoutConifg;
+    private static AutoLayoutConfig mAutoLayoutConfig;
 
     public AutoLayoutHelper(ViewGroup host)
     {
         mHost = host;
 
-        if (mAutoLayoutConifg == null)
+        if (mAutoLayoutConfig == null)
         {
             initAutoLayoutConfig(host);
         }
@@ -93,14 +94,14 @@ public class AutoLayoutHelper
 
     private void initAutoLayoutConfig(ViewGroup host)
     {
-        mAutoLayoutConifg = AutoLayoutConifg.getInstance();
-        mAutoLayoutConifg.init(host.getContext());
+        mAutoLayoutConfig = AutoLayoutConfig.getInstance();
+        mAutoLayoutConfig.init(host.getContext());
     }
 
 
     public void adjustChildren()
     {
-        AutoLayoutConifg.getInstance().checkParams();
+        AutoLayoutConfig.getInstance().checkParams();
 
         for (int i = 0, n = mHost.getChildCount(); i < n; i++)
         {
@@ -139,7 +140,20 @@ public class AutoLayoutHelper
         for (int i = 0; i < n; i++)
         {
             int index = array.getIndex(i);
-            String val = array.getString(index);
+
+            TypedValue value = new TypedValue();
+            boolean notNull = array.getValue(index, value);
+            if (!notNull){
+                continue;
+            }
+
+            CharSequence charSequence = value.coerceToString();
+
+            if (charSequence==null){
+                continue;
+            }
+
+            String val = charSequence.toString();
 
             if (!isPxVal(val)) continue;
 

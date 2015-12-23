@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AutoLayout.iml" filepath="$PROJECT_DIR$/AutoLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidAutoLayout.iml" filepath="$PROJECT_DIR$/AndroidAutoLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/autolayout/autolayout.iml" filepath="$PROJECT_DIR$/autolayout/autolayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
