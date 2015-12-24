@@ -33,6 +33,10 @@
             <flag name="paddingTop" value="1024"></flag>
             <flag name="paddingRight" value="2048"></flag>
             <flag name="paddingBottom" value="4096"></flag>
+            <flag name="minWidth" value="8192"></flag>
+            <flag name="maxWidth" value="16384"></flag>
+            <flag name="minHeight" value="32768"></flag>
+            <flag name="maxHeight" value="65536"></flag>
         </attr>
 
     </declare-styleable>

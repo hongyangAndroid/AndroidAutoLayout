@@ -111,7 +111,7 @@ dependencies {
 
 ## 配置
 
-默认使用的宽度是设备的可用高度，也就是不包括状态栏和底部的操作栏的，如果你希望拿设备的物理高度进行百分比化：
+默认使用的高度是设备的可用高度，也就是不包括状态栏和底部的操作栏的，如果你希望拿设备的物理高度进行百分比化：
 
 可以在Application的onCreate方法中进行设置:
 
@@ -210,7 +210,7 @@ public class AutoCardView extends CardView
 
 ### ListView、RecyclerView类的Item的适配
 
-对于ListView这类控件的item，默认跟局部写“px”进行适配是无效的，因为外层非AutoXXXLayout，而是ListView。但是，不用怕，一行代码就可以支持了：
+对于ListView这类控件的item，默认根局部写“px”进行适配是无效的，因为外层非AutoXXXLayout，而是ListView。但是，不用怕，一行代码就可以支持了：
 
 ```java
 @Override

@@ -20,5 +20,9 @@ public interface Attrs
     public static final int PADDING_TOP = PADDING_LEFT << 1;
     public static final int PADDING_RIGHT = PADDING_TOP << 1;
     public static final int PADDING_BOTTOM = PADDING_RIGHT << 1;
+    public static final int MIN_WIDTH = PADDING_BOTTOM << 1;
+    public static final int MAX_WIDTH = MIN_WIDTH << 1;
+    public static final int MIN_HEIGHT = MAX_WIDTH << 1;
+    public static final int MAX_HEIGHT = MIN_HEIGHT << 1;
 
 }
