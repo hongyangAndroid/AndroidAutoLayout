@@ -55,7 +55,7 @@ dependencies {
 
 ```
 dependencies {
-    compile 'com.zhy:autolayout:1.3.5'
+    compile 'com.zhy:autolayout:1.3.6'
 }
 ```
 
@@ -96,10 +96,6 @@ dependencies {
 
 这样也可以完成适配。
 
-
-
-
-
 ## 目前支持属性
 
 * layout_width
@@ -107,6 +103,7 @@ dependencies {
 * layout_margin(left,top,right,bottom)
 * pading(left,top,right,bottom)
 * textSize
+* maxWidth, minWidth, maxHeight, minHeight
 
 
 ## 配置
@@ -127,7 +124,6 @@ public class UseDeviceSizeApplication extends Application
 }
 
 ```
-
 
 ## 预览
 
