@@ -31,6 +31,10 @@ import com.zhy.autolayout.attr.MarginBottomAttr;
 import com.zhy.autolayout.attr.MarginLeftAttr;
 import com.zhy.autolayout.attr.MarginRightAttr;
 import com.zhy.autolayout.attr.MarginTopAttr;
+import com.zhy.autolayout.attr.MaxHeightAttr;
+import com.zhy.autolayout.attr.MaxWidthAttr;
+import com.zhy.autolayout.attr.MinHeightAttr;
+import com.zhy.autolayout.attr.MinWidthAttr;
 import com.zhy.autolayout.attr.PaddingAttr;
 import com.zhy.autolayout.attr.PaddingBottomAttr;
 import com.zhy.autolayout.attr.PaddingLeftAttr;
@@ -59,6 +63,11 @@ public class AutoLayoutHelper
                     android.R.attr.layout_marginTop,//
                     android.R.attr.layout_marginRight,//
                     android.R.attr.layout_marginBottom,//
+                    android.R.attr.maxWidth,//
+                    android.R.attr.maxHeight,//
+                    android.R.attr.minWidth,//
+                    android.R.attr.minHeight,//16843072
+
 
             };
 
@@ -75,6 +84,11 @@ public class AutoLayoutHelper
     private static final int INDEX_MARGIN_TOP = 10;
     private static final int INDEX_MARGIN_RIGHT = 11;
     private static final int INDEX_MARGIN_BOTTOM = 12;
+    private static final int INDEX_MAX_WIDTH = 13;
+    private static final int INDEX_MAX_HEIGHT = 14;
+    private static final int INDEX_MIN_WIDTH = 15;
+    private static final int INDEX_MIN_HEIGHT = 16;
+
 
     /**
      * move to other place?
@@ -194,7 +208,18 @@ public class AutoLayoutHelper
                 case INDEX_MARGIN_BOTTOM:
                     info.addAttr(new MarginBottomAttr(pxVal, baseWidth, baseHeight));
                     break;
-
+                case INDEX_MAX_WIDTH:
+                    info.addAttr(new MaxWidthAttr(pxVal, baseWidth, baseHeight));
+                    break;
+                case INDEX_MAX_HEIGHT:
+                    info.addAttr(new MaxHeightAttr(pxVal, baseWidth, baseHeight));
+                    break;
+                case INDEX_MIN_WIDTH:
+                    info.addAttr(new MinWidthAttr(pxVal, baseWidth, baseHeight));
+                    break;
+                case INDEX_MIN_HEIGHT:
+                    info.addAttr(new MinHeightAttr(pxVal, baseWidth, baseHeight));
+                    break;
             }
         }
         array.recycle();

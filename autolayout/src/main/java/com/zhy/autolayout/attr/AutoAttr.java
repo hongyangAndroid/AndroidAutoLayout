@@ -15,6 +15,23 @@ public abstract class AutoAttr
     protected int baseWidth;
     protected int baseHeight;
 
+    /*
+    protected boolean isBaseWidth;
+    protected boolean isBaseDefault;
+
+    public AutoAttr(int pxVal)
+    {
+        this.pxVal = pxVal;
+        isBaseDefault = true;
+    }
+
+    public AutoAttr(int pxVal, boolean isBaseWidth)
+    {
+        this.pxVal = pxVal;
+        this.isBaseWidth = isBaseWidth;
+    }
+ */
+
     public AutoAttr(int pxVal, int baseWidth, int baseHeight)
     {
         this.pxVal = pxVal;
