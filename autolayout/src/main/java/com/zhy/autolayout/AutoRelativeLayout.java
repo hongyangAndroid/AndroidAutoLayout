@@ -16,7 +16,9 @@
 
 package com.zhy.autolayout;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -40,6 +42,11 @@ public class AutoRelativeLayout extends RelativeLayout
     public AutoRelativeLayout(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public AutoRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
