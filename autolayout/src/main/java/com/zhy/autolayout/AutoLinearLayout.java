@@ -1,6 +1,8 @@
 package com.zhy.autolayout;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -15,11 +17,23 @@ public class AutoLinearLayout extends LinearLayout
 
     private AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
 
-    public AutoLinearLayout(Context context, AttributeSet attrs)
-    {
+    public AutoLinearLayout(Context context) {
+        super(context);
+    }
+
+    public AutoLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public AutoLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public AutoLinearLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
