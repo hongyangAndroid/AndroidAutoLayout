@@ -16,12 +16,12 @@
 
 package com.zhy.autolayout;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import com.zhy.autolayout.config.AutoLayoutConifg;
 import com.zhy.autolayout.utils.AutoLayoutHelper;
 
 public class AutoFrameLayout extends FrameLayout
@@ -41,6 +41,11 @@ public class AutoFrameLayout extends FrameLayout
     public AutoFrameLayout(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public AutoFrameLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
