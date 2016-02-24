@@ -206,6 +206,10 @@ public class AutoCardView extends CardView
 
 ### ListView、RecyclerView类的Item的适配
 
+**sample中包含ListView、RecyclerView例子，具体查看sample**
+
+* 对于ListView
+
 对于ListView这类控件的item，默认根局部写“px”进行适配是无效的，因为外层非AutoXXXLayout，而是ListView。但是，不用怕，一行代码就可以支持了：
 
 ```java
@@ -230,6 +234,28 @@ public View getView(int position, View convertView, ViewGroup parent)
 ```
 
 注意` AutoUtils.autoSize(convertView);`这行代码的位置即可。demo中也有相关实例。
+
+
+* 对于RecyclerView
+
+```java
+public ViewHolder(View itemView)
+{
+      super(itemView);
+      AutoUtils.autoSize(itemView);
+}
+
+//...
+@Override
+public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+{
+     View convertView = LayoutInflater.from(mContext).inflate(R.layout.recyclerview_item, parent, false);
+     return new ViewHolder(convertView);
+}
+
+```
+
+一定要记得`LayoutInflater.from(mContext).inflate`使用三个参数的方法！
 
 
 ### 指定设置的值参考宽度或者高度

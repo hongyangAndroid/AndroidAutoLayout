@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import com.zhy.autolayout.AutoLayoutActivity;
 import com.zhy.sample.fragment.ListFragment;
 import com.zhy.sample.fragment.PayFragment;
+import com.zhy.sample.fragment.RecyclerViewFragment;
 import com.zhy.sample.fragment.RegisterFragment;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class MainActivity extends AutoLayoutActivity
 		mList.add(new ListFragment());
 		mList.add(new RegisterFragment());
 		mList.add(new PayFragment());
+		mList.add(new RecyclerViewFragment());
 		mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager(), mList));
 	}
 

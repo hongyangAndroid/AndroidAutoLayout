@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 消客的列表 -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="244px"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="169px"
+        android:layout_height="169px"
+        app:layout_auto_baseheight="width"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="40px"
+        android:src="@drawable/tuijian_touxiang6" />
+
+    <TextView
+        android:id="@+id/xiaoke_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="262px"
+        android:layout_marginTop="60px"
+        android:text="刘小新"
+        android:textSize="48px" />
+
+    <TextView
+        android:id="@+id/xiaoke_people_nums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="262px"
+        android:layout_marginTop="136px"
+        android:text="消客:566人"
+        android:textColor="#656565"
+        android:textSize="40px" />
+
+    <TextView
+        android:id="@+id/xiaoke_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="580px"
+        android:layout_marginTop="69px"
+        android:text="手机:15511223564"
+        android:textColor="#656565"
+        android:textSize="38px" />
+
+    <TextView
+        android:id="@+id/xiaoke_saleprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="580px"
+        android:layout_marginTop="136px"
+        android:text="销售:￥8，653.00"
+        android:textColor="#656565"
+        android:textSize="38px" />
+
+</RelativeLayout>
