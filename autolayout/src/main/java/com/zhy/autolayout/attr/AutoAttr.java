@@ -72,7 +72,8 @@ public abstract class AutoAttr
             }
         }
 
-        val = Math.max(val, 1);//for very thin divider
+        if (val > 0)
+            val = Math.max(val, 1);//for very thin divider
         execute(view, val);
     }
 
