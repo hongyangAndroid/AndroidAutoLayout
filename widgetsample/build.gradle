@@ -21,6 +21,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:23.1.0'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile project(':autolayout')
+    compile project(':autolayout-widget')
+
 }

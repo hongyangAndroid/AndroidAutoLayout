@@ -62,6 +62,14 @@ public class AutoUtils
         view.setPadding(l, t, r, b);
     }
 
+    public static boolean autoed(View view)
+    {
+        Object tag = view.getTag(R.id.id_tag_autolayout_size);
+        if (tag != null) return true;
+        view.setTag(R.id.id_tag_autolayout_size, "Just Identify");
+        return false;
+    }
+
     public static void autoSize(View view)
     {
         ViewGroup.LayoutParams lp = view.getLayoutParams();

@@ -1,72 +1,27 @@
-<com.zhy.autolayout.widget.MetroLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:metro_divider="8px"
+    android:orientation="vertical"
     >
 
-    <TextView
-        android:layout_width="380px"
-        android:layout_height="328px"
-        android:gravity="center"
-        android:text="1"/>
-
-    <TextView
-        android:layout_width="380px"
-        android:layout_height="160px"
-        android:gravity="center"
-        android:text="2"/>
+    <com.zhy.autolayout.widget.AutoTabLayout
+        android:id="@+id/id_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="96px"
+        android:background="#1787ff"
+        app:tabIndicatorColor="#ff4a1c"
+        app:tabSelectedTextColor="#ff4a1c"
+        app:tabTextAppearance="@style/MyCustomTabTextAppearance"
+        app:tabTextColor="#ffffff"/>
 
 
-    <TextView
-        android:layout_width="380px"
-        android:layout_height="160px"
-        android:gravity="center"
-        android:text="3"/>
-
-    <TextView
-        android:layout_width="186px"
-        android:layout_height="160px"
-        android:gravity="center"
-        android:text="4"/>
-
-    <TextView
-        android:layout_width="186px"
-        android:layout_height="160px"
-        android:gravity="center"
-        android:text="5"/>
-
-    <TextView
-        android:layout_width="124px"
-        android:layout_height="328px"
-        android:gravity="center"
-        android:text="6"/>
-
-    <TextView
-        android:layout_width="248px"
-        android:layout_height="104px"
-        android:gravity="center"
-        android:text="7"/>
-
-    <TextView
-        android:layout_width="248px"
-        android:layout_height="104px"
-        android:gravity="center"
-        android:text="8"/>
-
-    <TextView
-        android:layout_width="380px"
-        android:layout_height="160px"
-        android:gravity="center"
-        android:text="9"/>
-
-    <TextView
-        android:layout_width="248px"
-        android:layout_height="104px"
-        android:gravity="center"
-        android:text="10"/>
-
-
-</com.zhy.autolayout.widget.MetroLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+</LinearLayout>
