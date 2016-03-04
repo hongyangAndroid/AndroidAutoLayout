@@ -156,7 +156,7 @@ public class AutoLayoutHelper
 //            String val = array.getString(index);
 //            if (!isPxVal(val)) continue;
 
-            if (DimenUtils.isPxVal(array.peekValue(index))) continue;
+            if (!DimenUtils.isPxVal(array.peekValue(index))) continue;
 
             int pxVal = 0;
             try
