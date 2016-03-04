@@ -5,17 +5,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.zhy.autolayout.AutoLayoutActivity;
 import com.zhy.autolayout.test.widgets.fragments.SimpleFragment;
-
-import java.util.List;
 
 public class MainActivity extends AutoLayoutActivity
 {
@@ -42,7 +36,7 @@ public class MainActivity extends AutoLayoutActivity
             @Override
             public int getCount()
             {
-                return 3;
+                return 2;
             }
 
             @Override
