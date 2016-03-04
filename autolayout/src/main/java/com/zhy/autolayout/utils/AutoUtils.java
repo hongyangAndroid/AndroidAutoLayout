@@ -73,13 +73,8 @@ public class AutoUtils
     public static void autoSize(View view)
     {
         ViewGroup.LayoutParams lp = view.getLayoutParams();
-
         if (lp == null) return;
-
-        Object tag = view.getTag(R.id.id_tag_autolayout_size);
-        if (tag != null) return;
-
-        view.setTag(R.id.id_tag_autolayout_size, "Just Identify");
+        if (autoed(view)) return;
 
         if (lp.width > 0)
         {
@@ -93,6 +88,49 @@ public class AutoUtils
             int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
             int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
             lp.height = (int) (lp.height * 1.0f / designHeight * screenHeight);
+        }
+    }
+
+    /**
+     * @param view
+     * @param widthBaseHeight true则layout_width的值以高度为标准；false则layout_height以宽度为标准
+     */
+    public static void autoSize(View view, boolean widthBaseHeight)
+    {
+        ViewGroup.LayoutParams lp = view.getLayoutParams();
+        if (lp == null) return;
+        if (autoed(view)) return;
+
+
+        if (lp.width > 0)
+        {
+            if (widthBaseHeight)
+            {
+                int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
+                int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+                lp.width = (int) (lp.width * 1.0f / designHeight * screenHeight);
+            } else
+            {
+                int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
+                int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
+                lp.width = (int) (lp.width * 1.0f / designWidth * screenWidth);
+            }
+        }
+
+        if (lp.height > 0)
+        {
+            if (!widthBaseHeight)
+            {
+                int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
+                int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
+                lp.height = (int) (lp.height * 1.0f / designWidth * screenWidth);
+            } else
+            {
+                int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
+                int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+                lp.height = (int) (lp.height * 1.0f / designHeight * screenHeight);
+            }
+
         }
     }
 
