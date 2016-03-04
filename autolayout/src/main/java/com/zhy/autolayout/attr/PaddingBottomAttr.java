@@ -34,4 +34,23 @@ public class PaddingBottomAttr extends AutoAttr
         view.setPadding(l, t, r, b);
 
     }
+
+
+    public static PaddingBottomAttr generate(int val, int baseFlag)
+    {
+        PaddingBottomAttr attr = null;
+        switch (baseFlag)
+        {
+            case AutoAttr.BASE_WIDTH:
+                attr = new PaddingBottomAttr(val, Attrs.PADDING_BOTTOM, 0);
+                break;
+            case AutoAttr.BASE_HEIGHT:
+                attr = new PaddingBottomAttr(val, 0, Attrs.PADDING_BOTTOM);
+                break;
+            case AutoAttr.BASE_DEFAULT:
+                attr = new PaddingBottomAttr(val, 0, 0);
+                break;
+        }
+        return attr;
+    }
 }

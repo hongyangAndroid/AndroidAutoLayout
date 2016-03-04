@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhy.autolayout.attr.AutoAttr;
 import com.zhy.autolayout.utils.AutoUtils;
 import com.zhy.sample.R;
 
@@ -85,9 +86,8 @@ public class RecyclerViewGridFragment extends Fragment
             super(itemView);
             Random random = new Random();
             itemView.setBackgroundColor(Color.argb(200, random.nextInt(255), random.nextInt(255), random.nextInt(255)));
-            //对于listview，注意添加这一行，即可在item上使用高度
-            AutoUtils.autoSize(itemView, true);
-
+            //recyclerview，注意添加这一行
+            AutoUtils.autoSize(itemView, AutoAttr.BASE_HEIGHT);
 //            Log.e("", itemView.getLayoutParams().width + "  , " + itemView.getLayoutParams().height);
         }
     }

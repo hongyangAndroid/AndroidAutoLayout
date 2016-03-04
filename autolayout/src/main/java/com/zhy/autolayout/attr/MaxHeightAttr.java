@@ -37,4 +37,34 @@ public class MaxHeightAttr extends AutoAttr
         {
         }
     }
+
+    public static MaxHeightAttr generate(int val, int baseFlag)
+    {
+        MaxHeightAttr attr = null;
+        switch (baseFlag)
+        {
+            case AutoAttr.BASE_WIDTH:
+                attr = new MaxHeightAttr(val, Attrs.MAX_HEIGHT, 0);
+                break;
+            case AutoAttr.BASE_HEIGHT:
+                attr = new MaxHeightAttr(val, 0, Attrs.MAX_HEIGHT);
+                break;
+            case AutoAttr.BASE_DEFAULT:
+                attr = new MaxHeightAttr(val, 0, 0);
+                break;
+        }
+        return attr;
+    }
+
+    public static int getMaxHeight(View view)
+    {
+        try
+        {
+            Method setMaxWidthMethod = view.getClass().getMethod("getMaxHeight");
+            return (int) setMaxWidthMethod.invoke(view);
+        } catch (Exception ignore)
+        {
+        }
+        return 0;
+    }
 }

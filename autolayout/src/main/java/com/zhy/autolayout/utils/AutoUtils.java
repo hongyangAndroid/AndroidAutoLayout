@@ -1,9 +1,11 @@
 package com.zhy.autolayout.utils;
 
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.zhy.autolayout.AutoLayoutInfo;
 import com.zhy.autolayout.R;
+import com.zhy.autolayout.attr.Attrs;
+import com.zhy.autolayout.attr.AutoAttr;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 /**
@@ -22,44 +24,58 @@ public class AutoUtils
         autoSize(view);
         autoPadding(view);
         autoMargin(view);
+        autoTextSize(view, AutoAttr.BASE_DEFAULT);
+    }
+
+    /**
+     * @param view
+     * @param attrs #Attrs.WIDTH|Attrs.HEIGHT
+     * @param base  AutoAttr.BASE_WIDTH|AutoAttr.BASE_HEIGHT|AutoAttr.BASE_DEFAULT
+     */
+    public static void auto(View view, int attrs, int base)
+    {
+        AutoLayoutInfo autoLayoutInfo = AutoLayoutInfo.getAttrFromView(view, attrs, base);
+        autoLayoutInfo.fillAttrs(view);
+    }
+
+    public static void autoTextSize(View view)
+    {
+        auto(view, Attrs.TEXTSIZE, AutoAttr.BASE_DEFAULT);
+    }
+
+    public static void autoTextSize(View view, int base)
+    {
+        auto(view, Attrs.TEXTSIZE, base);
     }
 
     public static void autoMargin(View view)
     {
-        if (!(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
-            return;
+        auto(view, Attrs.MARGIN, AutoAttr.BASE_DEFAULT);
+    }
 
-        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-        if (lp == null) return;
-
-        Object tag = view.getTag(R.id.id_tag_autolayout_margin);
-        if (tag != null) return;
-        view.setTag(R.id.id_tag_autolayout_margin, "Just Identify");
-
-        lp.leftMargin = getPercentWidthSize(lp.leftMargin);
-        lp.topMargin = getPercentHeightSize(lp.topMargin);
-        lp.rightMargin = getPercentWidthSize(lp.rightMargin);
-        lp.bottomMargin = getPercentHeightSize(lp.bottomMargin);
-
+    public static void autoMargin(View view, int base)
+    {
+        auto(view, Attrs.MARGIN, base);
     }
 
     public static void autoPadding(View view)
     {
-        Object tag = view.getTag(R.id.id_tag_autolayout_padding);
-        if (tag != null) return;
-        view.setTag(R.id.id_tag_autolayout_padding, "Just Identify");
+        auto(view, Attrs.PADDING, AutoAttr.BASE_DEFAULT);
+    }
 
-        int l = view.getPaddingLeft();
-        int t = view.getPaddingTop();
-        int r = view.getPaddingRight();
-        int b = view.getPaddingBottom();
+    public static void autoPadding(View view, int base)
+    {
+        auto(view, Attrs.PADDING, base);
+    }
 
-        l = getPercentWidthSize(l);
-        t = getPercentHeightSize(t);
-        r = getPercentWidthSize(r);
-        b = getPercentHeightSize(b);
+    public static void autoSize(View view)
+    {
+        auto(view, Attrs.WIDTH | Attrs.HEIGHT, AutoAttr.BASE_DEFAULT);
+    }
 
-        view.setPadding(l, t, r, b);
+    public static void autoSize(View view, int base)
+    {
+        auto(view, Attrs.WIDTH | Attrs.HEIGHT, base);
     }
 
     public static boolean autoed(View view)
@@ -70,75 +86,25 @@ public class AutoUtils
         return false;
     }
 
-    public static void autoSize(View view)
+    public static float getPercentWidth1px()
     {
-        ViewGroup.LayoutParams lp = view.getLayoutParams();
-        if (lp == null) return;
-        if (autoed(view)) return;
-
-        if (lp.width > 0)
-        {
-            int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
-            int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
-            lp.width = (int) (lp.width * 1.0f / designWidth * screenWidth);
-        }
-
-        if (lp.height > 0)
-        {
-            int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
-            int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
-            lp.height = (int) (lp.height * 1.0f / designHeight * screenHeight);
-        }
+        int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
+        int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
+        return 1.0f * screenWidth / designWidth;
     }
 
-    /**
-     * @param view
-     * @param widthBaseHeight true则layout_width的值以高度为标准；false则layout_height以宽度为标准
-     */
-    public static void autoSize(View view, boolean widthBaseHeight)
+    public static float getPercentHeight1px()
     {
-        ViewGroup.LayoutParams lp = view.getLayoutParams();
-        if (lp == null) return;
-        if (autoed(view)) return;
-
-
-        if (lp.width > 0)
-        {
-            if (widthBaseHeight)
-            {
-                int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
-                int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
-                lp.width = (int) (lp.width * 1.0f / designHeight * screenHeight);
-            } else
-            {
-                int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
-                int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
-                lp.width = (int) (lp.width * 1.0f / designWidth * screenWidth);
-            }
-        }
-
-        if (lp.height > 0)
-        {
-            if (!widthBaseHeight)
-            {
-                int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
-                int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
-                lp.height = (int) (lp.height * 1.0f / designWidth * screenWidth);
-            } else
-            {
-                int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
-                int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
-                lp.height = (int) (lp.height * 1.0f / designHeight * screenHeight);
-            }
-
-        }
+        int screenHeight = AutoLayoutConifg.getInstance().getScreenHeight();
+        int designHeight = AutoLayoutConifg.getInstance().getDesignHeight();
+        return 1.0f * screenHeight / designHeight;
     }
+
 
     public static int getPercentWidthSize(int val)
     {
         int screenWidth = AutoLayoutConifg.getInstance().getScreenWidth();
         int designWidth = AutoLayoutConifg.getInstance().getDesignWidth();
-
         return (int) (val * 1.0f / designWidth * screenWidth);
     }
 

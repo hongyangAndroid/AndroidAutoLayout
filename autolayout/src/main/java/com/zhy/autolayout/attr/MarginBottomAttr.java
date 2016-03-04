@@ -35,4 +35,22 @@ public class MarginBottomAttr extends AutoAttr
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
         lp.bottomMargin = val;
     }
+
+    public static MarginBottomAttr generate(int val, int baseFlag)
+    {
+        MarginBottomAttr attr = null;
+        switch (baseFlag)
+        {
+            case AutoAttr.BASE_WIDTH:
+                attr = new MarginBottomAttr(val, Attrs.MARGIN_BOTTOM, 0);
+                break;
+            case AutoAttr.BASE_HEIGHT:
+                attr = new MarginBottomAttr(val, 0, Attrs.MARGIN_BOTTOM);
+                break;
+            case AutoAttr.BASE_DEFAULT:
+                attr = new MarginBottomAttr(val, 0, 0);
+                break;
+        }
+        return attr;
+    }
 }

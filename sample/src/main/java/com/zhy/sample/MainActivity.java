@@ -16,6 +16,7 @@ import com.zhy.sample.fragment.PayFragment;
 import com.zhy.sample.fragment.RecyclerViewFragment;
 import com.zhy.sample.fragment.RecyclerViewGridFragment;
 import com.zhy.sample.fragment.RegisterFragment;
+import com.zhy.sample.fragment.TestFragment;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class MainActivity extends AutoLayoutActivity
 			// 透明状态栏
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			// 透明导航栏
-			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 		}
 	}
 
@@ -52,6 +53,7 @@ public class MainActivity extends AutoLayoutActivity
 		mList.add(new PayFragment());
 		mList.add(new RecyclerViewFragment());
 		mList.add(new RecyclerViewGridFragment());
+		mList.add(new TestFragment());
 		mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager(), mList));
 	}
 

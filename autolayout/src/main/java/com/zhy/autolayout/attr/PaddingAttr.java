@@ -43,4 +43,7 @@ public class PaddingAttr extends AutoAttr
     {
         view.setPadding(val, val, val, val);
     }
+
+
+
 }

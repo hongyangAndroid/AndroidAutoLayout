@@ -31,4 +31,24 @@ public class HeightAttr extends AutoAttr
         ViewGroup.LayoutParams lp = view.getLayoutParams();
         lp.height = val;
     }
+
+    public static HeightAttr generate(int val, int baseFlag)
+    {
+        HeightAttr heightAttr = null;
+        switch (baseFlag)
+        {
+            case AutoAttr.BASE_WIDTH:
+                heightAttr = new HeightAttr(val, Attrs.HEIGHT, 0);
+                break;
+            case AutoAttr.BASE_HEIGHT:
+                heightAttr = new HeightAttr(val, 0, Attrs.HEIGHT);
+                break;
+            case AutoAttr.BASE_DEFAULT:
+                heightAttr = new HeightAttr(val, 0, 0);
+                break;
+        }
+        return heightAttr;
+    }
+
+
 }

@@ -47,6 +47,6 @@ public class MarginAttr extends AutoAttr
     {
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
         lp.leftMargin = lp.rightMargin = lp.topMargin = lp.bottomMargin = val;
-
     }
+
 }

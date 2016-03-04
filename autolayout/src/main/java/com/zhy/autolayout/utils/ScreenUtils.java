@@ -1,6 +1,7 @@
 package com.zhy.autolayout.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
@@ -13,6 +14,23 @@ import android.view.WindowManager;
  */
 public class ScreenUtils
 {
+
+    public static int getStatusBarHeight(Context context)
+    {
+        int result = 0;
+        try
+        {
+            int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+            if (resourceId > 0)
+            {
+                result = context.getResources().getDimensionPixelSize(resourceId);
+            }
+        } catch (Resources.NotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 
     public static int[] getScreenSize(Context context, boolean useDeviceSize)
@@ -31,7 +49,8 @@ public class ScreenUtils
         if (!useDeviceSize)
         {
             size[0] = widthPixels;
-            size[1] = heightPixels;
+            size[1] = heightPixels - getStatusBarHeight(context);
+
             return size;
         }
 

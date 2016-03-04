@@ -32,4 +32,22 @@ public class WidthAttr extends AutoAttr
         lp.width = val;
     }
 
+    public static WidthAttr generate(int val, int baseFlag)
+    {
+        WidthAttr widthAttr = null;
+        switch (baseFlag)
+        {
+            case AutoAttr.BASE_WIDTH:
+                widthAttr = new WidthAttr(val, Attrs.WIDTH, 0);
+                break;
+            case AutoAttr.BASE_HEIGHT:
+                widthAttr = new WidthAttr(val, 0, Attrs.WIDTH);
+                break;
+            case AutoAttr.BASE_DEFAULT:
+                widthAttr = new WidthAttr(val, 0, 0);
+                break;
+        }
+        return widthAttr;
+    }
+
 }

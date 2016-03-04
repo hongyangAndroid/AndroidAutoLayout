@@ -28,11 +28,29 @@ public class MarginLeftAttr extends AutoAttr
     @Override
     protected void execute(View view, int val)
     {
-        if(!(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+        if (!(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
         {
-            return ;
+            return;
         }
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
         lp.leftMargin = val;
+    }
+
+    public static MarginLeftAttr generate(int val, int baseFlag)
+    {
+        MarginLeftAttr attr = null;
+        switch (baseFlag)
+        {
+            case AutoAttr.BASE_WIDTH:
+                attr = new MarginLeftAttr(val, Attrs.MARGIN_LEFT, 0);
+                break;
+            case AutoAttr.BASE_HEIGHT:
+                attr = new MarginLeftAttr(val, 0, Attrs.MARGIN_LEFT);
+                break;
+            case AutoAttr.BASE_DEFAULT:
+                attr = new MarginLeftAttr(val, 0, 0);
+                break;
+        }
+        return attr;
     }
 }

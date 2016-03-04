@@ -1,0 +1,30 @@
+<FrameLayout style="@style/immersion_status"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical">
+
+    <TextView
+        android:layout_width="920px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20px"
+        android:gravity="left"
+        android:text="title高度130\nmarginTop=1658\n自身高度=132\n130+1658+132 = 1920\n用于测试底部操作栏是否影响UI。"
+        android:textSize="49px"/>
+
+
+    <!--title高度130,marginTop=1658,自身高度=132; 130+1658+132 = 1920;-->
+    <TextView
+        android:layout_width="920px"
+        android:layout_height="132px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="1658px"
+        android:background="#76ff5a"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="完成注册"
+        android:textColor="@android:color/white"
+        android:textSize="49px"/>
+</FrameLayout>

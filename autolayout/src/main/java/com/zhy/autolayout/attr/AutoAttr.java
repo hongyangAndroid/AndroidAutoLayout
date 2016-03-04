@@ -11,6 +11,10 @@ import com.zhy.autolayout.utils.L;
  */
 public abstract class AutoAttr
 {
+    public static final int BASE_WIDTH = 1;
+    public static final int BASE_HEIGHT = 2;
+    public static final int BASE_DEFAULT = 3;
+
     protected int pxVal;
     protected int baseWidth;
     protected int baseHeight;
@@ -108,6 +112,7 @@ public abstract class AutoAttr
     protected abstract boolean defaultBaseWidth();
 
     protected abstract void execute(View view, int val);
+
 
     @Override
     public String toString()
