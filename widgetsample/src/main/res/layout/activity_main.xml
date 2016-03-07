@@ -1,14 +1,25 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
+    <com.zhy.autolayout.widget.AutoToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:subtitleTextAppearance="@style/ToolbarSubTitleTextAppearance"
+        app:theme="@style/ToolBarMenuStyle"
+        app:titleTextAppearance="@style/ToolbarTitleTextAppearance">
 
-    <com.zhy.autolayout.widget.AutoTabLayout
+    </com.zhy.autolayout.widget.AutoToolbar>
+
+    <android.support.design.widget.TabLayout
         android:id="@+id/id_tablayout"
         android:layout_width="match_parent"
         android:layout_height="96px"
@@ -16,13 +27,12 @@
         app:tabIndicatorColor="#ff4a1c"
         app:tabSelectedTextColor="#ff4a1c"
         app:tabTextAppearance="@style/MyCustomTabTextAppearance"
-        app:tabTextColor="#ffffff"/>
+        app:tabTextColor="#ffffff" />
 
 
     <android.support.v4.view.ViewPager
         android:id="@+id/id_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
 </LinearLayout>
