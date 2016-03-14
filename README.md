@@ -59,13 +59,13 @@ dependencies {
 
 ```
 dependencies {
-    compile 'com.zhy:autolayout:1.4.1'
+    compile 'com.zhy:autolayout:1.4.3'
 }
 ```
 
 * Eclipse
 
-下载[AutoLayoutDemoForEclipse.zip](AutoLayoutDemoForEclipse.zip)，导入到eclipse中即可。
+建议使用As，方便版本更新。实在不行，只有复制粘贴源码了。
 
 ## 用法
 

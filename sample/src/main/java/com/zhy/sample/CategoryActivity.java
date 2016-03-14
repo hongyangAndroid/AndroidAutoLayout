@@ -55,5 +55,4 @@ public class CategoryActivity extends AutoLayoutActivity
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
-
 }
