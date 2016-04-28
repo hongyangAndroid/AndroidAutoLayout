@@ -26,6 +26,7 @@ public class AutoContentFrameLayout extends ContentFrameLayout
     public AutoContentFrameLayout(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
+
     }
 
     @Override

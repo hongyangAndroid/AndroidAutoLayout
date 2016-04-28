@@ -283,12 +283,25 @@ public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 
 ### TextView的高度问题
 
-设计稿一般只会标识一个字体的大小，比如你设置textSize="20px"，实际上TextView所占据的高度肯定大于20px，字的上下都会有一定的建议，所以一定要灵活去写字体的高度，比如对于text上下的margin可以选择尽可能小一点。或者选择别的约束条件去定位（比如上例，选择了marginBottom）
+设计稿一般只会标识一个字体的大小，比如你设置textSize="20px"，实际上TextView所占据的高度肯定大于20px，字的上下都会有一定的间隙，所以一定要灵活去写字体的高度，比如对于text上下的margin可以选择尽可能小一点。或者选择别的约束条件去定位（比如上例，选择了marginBottom）
 
-##TODO
 
-* 增加单个Activity横屏布局的支持（设计图必须是横屏的）
-* 完善demo(复杂的，简单的，ListView的各种)
+## 常见问题
+
+###(1)导入后出现`org/gradle/api/publication/maven/internal/DefaultMavenFactory`
+
+最简单的方式，通过`compile 'com.zhy:autolayout:x.x.x'`进行依赖使用，如果一定要以module引用，参考该issue[#74](https://github.com/hongyangAndroid/AndroidAutoLayout/issues/74)
+
+###(2)RadioGroup,Toolbar等控件中的子View无法完成适配
+
+这个其实上文已经提到过了，需要自己扩展。不过这个很多使用者贡献了他们的扩展类可以直接使用，
+参考[autolayout-widget](https://github.com/hongyangAndroid/AndroidAutoLayout/tree/master/widgetsample),
+如果没有发现你需要的容器类，那么你就真的需要自行扩展了，当然如果你完成了扩展，可以给我发个PR，或者让我知道，我可以加入到
+`autolayout-widget`中方便他人，ps:需要用到哪个copy就好了，不要直接引用`autolayout-widget`，因为其引用了大量的库，可能很多
+库你是用不到的。
+
+
+
 
 ## 其他信息
 
