@@ -300,6 +300,17 @@ public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 `autolayout-widget`中方便他人，ps:需要用到哪个copy就好了，不要直接引用`autolayout-widget`，因为其引用了大量的库，可能很多
 库你是用不到的。
 
+###(3)java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity.
+
+这个问题是因为默认AutoLayoutActivity会继承自AppCompatActivity，所以默认需要设置
+Theme.AppCompat的theme；
+
+如果你使用的依旧是FragmentActivity等，且不考虑使用AppCompatActivity，
+你可以选择自己编写一个`MyAutoLayoutActivity extends 目前你使用的Activity基类`，例如
+`MyAutoLayoutActivity extends FragmentActivity`，然后将该库中AutoLayoutActivity中的逻辑
+拷贝进去即可，以后你就继承你的`MyAutoLayoutActivity`就好了。
+
+ps：还是建议尽快更新SDK版本使用`AppCompatActivity`.
 
 
 
