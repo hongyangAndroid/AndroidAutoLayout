@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhy.autolayout.utils.AutoUtils;
+import com.zhy.base.adapter.recyclerview.CommonAdapter;
 import com.zhy.sample.R;
 import com.zhy.sample.view.DividerItemDecoration;
 
@@ -42,51 +43,33 @@ public class RecyclerViewFragment extends Fragment
             mList.add(i + "");
         }
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(new MyAdapter());
+        mRecyclerView.setAdapter(new MyAdapter(getActivity(),mList));
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL_LIST));
     }
 
-    class MyAdapter extends RecyclerView.Adapter<ViewHolder>
+    class MyAdapter extends CommonAdapter<String>
     {
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+        public MyAdapter(Context context, List<String> datas)
         {
-            View convertView = LayoutInflater.from(mContext).inflate(R.layout.recyclerview_item, parent, false);
-            return new ViewHolder(convertView);
+            super(context, R.layout.recyclerview_item, datas);
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position)
+        public com.zhy.base.adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
-
+            com.zhy.base.adapter.ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+            AutoUtils.autoSize(viewHolder.getConvertView());
+            return viewHolder;
         }
 
         @Override
-        public long getItemId(int position)
+        public void convert(com.zhy.base.adapter.ViewHolder viewHolder, String s)
         {
-            return position;
         }
-
-        @Override
-        public int getItemCount()
-        {
-            return mList.size();
-        }
-
-
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder
-    {
 
-        public ViewHolder(View itemView)
-        {
-            super(itemView);
-            //对于listview，注意添加这一行，即可在item上使用高度
-            AutoUtils.autoSize(itemView);
-        }
-    }
 
 }
