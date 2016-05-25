@@ -1,5 +1,6 @@
 package com.zhy.sample;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,12 @@ public class CategoryActivity extends AutoLayoutActivity
     private String[] mTabTitles = new String[]
             {"单个UI", "正方形"};
 
+
+    @Override
+    public Context getBaseContext()
+    {
+        return super.getBaseContext();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,6 +61,5 @@ public class CategoryActivity extends AutoLayoutActivity
 
         mTabLayout.setupWithViewPager(mViewPager);
     }
-
 
 }

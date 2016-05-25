@@ -41,6 +41,21 @@ public class ListFragment extends Fragment
             mList.add(i + "");
         }
         mlistview.setAdapter(new MyAdapter());
+
+//        mlistview.setAdapter(new CommonAdapter<String>(getActivity(),R.layout.list_item,mList)
+//        {
+//            @Override
+//            protected void onConvertViewCreated(View convertView)
+//            {
+//                AutoUtils.autoSize(convertView);
+//            }
+//
+//            @Override
+//            public void convert(com.zhy.base.adapter.ViewHolder viewHolder, String s)
+//            {
+//
+//            }
+//        });
     }
 
     class MyAdapter extends BaseAdapter

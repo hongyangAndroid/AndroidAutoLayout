@@ -35,7 +35,8 @@ public class AutoUtils
     public static void auto(View view, int attrs, int base)
     {
         AutoLayoutInfo autoLayoutInfo = AutoLayoutInfo.getAttrFromView(view, attrs, base);
-        autoLayoutInfo.fillAttrs(view);
+        if (autoLayoutInfo != null)
+            autoLayoutInfo.fillAttrs(view);
     }
 
     public static void autoTextSize(View view)

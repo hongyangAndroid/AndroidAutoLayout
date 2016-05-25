@@ -15,6 +15,10 @@ import com.zhy.autolayout.attr.MaxHeightAttr;
 import com.zhy.autolayout.attr.MaxWidthAttr;
 import com.zhy.autolayout.attr.MinHeightAttr;
 import com.zhy.autolayout.attr.MinWidthAttr;
+import com.zhy.autolayout.attr.PaddingBottomAttr;
+import com.zhy.autolayout.attr.PaddingLeftAttr;
+import com.zhy.autolayout.attr.PaddingRightAttr;
+import com.zhy.autolayout.attr.PaddingTopAttr;
 import com.zhy.autolayout.attr.TextSizeAttr;
 import com.zhy.autolayout.attr.WidthAttr;
 
@@ -88,10 +92,10 @@ public class AutoLayoutInfo
         //padding
         if ((attrs & Attrs.PADDING) != 0)
         {
-            autoLayoutInfo.addAttr(MarginLeftAttr.generate(view.getPaddingLeft(), base));
-            autoLayoutInfo.addAttr(MarginTopAttr.generate(view.getPaddingTop(), base));
-            autoLayoutInfo.addAttr(MarginRightAttr.generate(view.getPaddingRight(), base));
-            autoLayoutInfo.addAttr(MarginBottomAttr.generate(view.getPaddingBottom(), base));
+            autoLayoutInfo.addAttr(PaddingLeftAttr.generate(view.getPaddingLeft(), base));
+            autoLayoutInfo.addAttr(PaddingTopAttr.generate(view.getPaddingTop(), base));
+            autoLayoutInfo.addAttr(PaddingRightAttr.generate(view.getPaddingRight(), base));
+            autoLayoutInfo.addAttr(PaddingBottomAttr.generate(view.getPaddingBottom(), base));
         }
         if ((attrs & Attrs.PADDING_LEFT) != 0)
         {

@@ -34,6 +34,7 @@ public class MarginTopAttr extends AutoAttr
         }
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
         lp.topMargin = val;
+
     }
 
 
