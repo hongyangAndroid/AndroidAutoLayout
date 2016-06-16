@@ -22,7 +22,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhy.autolayout.AutoFrameLayout;
 import com.zhy.autolayout.AutoLayoutInfo;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.autolayout.R;
 import com.zhy.autolayout.attr.HeightAttr;
 import com.zhy.autolayout.attr.MarginAttr;
@@ -88,6 +91,9 @@ public class AutoLayoutHelper
     private static final int INDEX_MIN_WIDTH = 15;
     private static final int INDEX_MIN_HEIGHT = 16;
 
+    private static final String LAYOUT_LINEARLAYOUT = "LinearLayout";
+    private static final String LAYOUT_FRAMELAYOUT = "FrameLayout";
+    private static final String LAYOUT_RELATIVELAYOUT = "RelativeLayout";
 
     /**
      * move to other place?
@@ -229,5 +235,22 @@ public class AutoLayoutHelper
     public interface AutoLayoutParams
     {
         AutoLayoutInfo getAutoLayoutInfo();
+    }
+
+    public static View onCreateAutoLayoutView(String name, Context context, AttributeSet attrs) {
+        View view = null;
+        if (name.equals(LAYOUT_LINEARLAYOUT)) {
+            view = new AutoLinearLayout(context, attrs);
+        }
+
+        if (name.equals(LAYOUT_FRAMELAYOUT)) {
+            view = new AutoFrameLayout(context, attrs);
+        }
+
+        if (name.equals(LAYOUT_RELATIVELAYOUT)) {
+            view = new AutoRelativeLayout(context, attrs);
+        }
+
+        return view;
     }
 }
