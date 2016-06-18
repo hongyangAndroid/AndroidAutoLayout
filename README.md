@@ -88,7 +88,8 @@ dependencies {
 ### 第三步：
 
 在Application子类或Activity的setContentView之前注册AutoLayout
-AutoLayoutConifg.getInstance().init(this);
+
+    AutoLayoutConifg.getInstance().init(this);
 
 
 非常简单的三步，你就可以开始愉快的编写布局了，详细可以参考sample。
