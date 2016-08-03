@@ -16,6 +16,8 @@ public class AutoLinearLayout extends LinearLayout
 {
 
     private AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
+    private Context mContext;
+    private AttributeSet mAttrs;
 
     public AutoLinearLayout(Context context) {
         super(context);
@@ -39,7 +41,7 @@ public class AutoLinearLayout extends LinearLayout
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
         if (!isInEditMode())
-            mHelper.adjustChildren();
+            mHelper.adjustChildren(mContext,mAttrs);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
@@ -54,6 +56,8 @@ public class AutoLinearLayout extends LinearLayout
     @Override
     public LayoutParams generateLayoutParams(AttributeSet attrs)
     {
+        this.mContext = getContext();
+        this.mAttrs = attrs;
         return new AutoLinearLayout.LayoutParams(getContext(), attrs);
     }
 

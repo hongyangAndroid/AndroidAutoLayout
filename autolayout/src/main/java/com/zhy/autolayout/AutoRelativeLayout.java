@@ -28,6 +28,8 @@ import com.zhy.autolayout.utils.AutoLayoutHelper;
 public class AutoRelativeLayout extends RelativeLayout
 {
     private final AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
+    private Context mContext;
+    private AttributeSet mAttrs;
 
     public AutoRelativeLayout(Context context)
     {
@@ -52,6 +54,8 @@ public class AutoRelativeLayout extends RelativeLayout
     @Override
     public LayoutParams generateLayoutParams(AttributeSet attrs)
     {
+        this.mContext = getContext();
+        this.mAttrs = attrs;
         return new LayoutParams(getContext(), attrs);
     }
 
@@ -59,7 +63,7 @@ public class AutoRelativeLayout extends RelativeLayout
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
         if (!isInEditMode())
-            mHelper.adjustChildren();
+            mHelper.adjustChildren(mContext,mAttrs);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 

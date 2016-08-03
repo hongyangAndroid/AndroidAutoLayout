@@ -112,7 +112,8 @@ public class AutoLayoutHelper
     }
 
 
-    public void adjustChildren()
+    public void adjustChildren(Context context,
+                               AttributeSet attrs)
     {
         AutoLayoutConifg.getInstance().checkParams();
 
@@ -123,8 +124,8 @@ public class AutoLayoutHelper
 
             if (params instanceof AutoLayoutParams)
             {
-                AutoLayoutInfo info =
-                        ((AutoLayoutParams) params).getAutoLayoutInfo();
+//                AutoLayoutInfo info =((AutoLayoutParams) params).getAutoLayoutInfo();
+                AutoLayoutInfo info =getAutoLayoutInfo(context,attrs);
                 if (info != null)
                 {
                     info.fillAttrs(view);
