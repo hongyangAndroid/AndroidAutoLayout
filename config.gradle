@@ -1,0 +1,24 @@
+ext {
+
+    android = [
+            compileSdkVersion: 23,
+            buildToolsVersion: "25.0.0",
+            minSdkVersion    : 15,
+            targetSdkVersion : 23,
+            versionCode      : 1,
+            versionName      : "20180601"
+    ]
+
+    dependVersion = [
+            support: "23.4.0"
+    ]
+
+    dependencies = [
+            // support
+            appcompatV7 : "com.android.support:appcompat-v7:${dependVersion.support}",
+            recyclerview: "com.android.support:recyclerview-v7:${dependVersion.support}"
+    ]
+    publish =[
+        version : "1.5.0"
+    ]
+}
