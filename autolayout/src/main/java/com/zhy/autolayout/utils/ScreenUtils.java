@@ -9,7 +9,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 /**
- * Created by zhy on 15/12/4.<br/>
+ * Created by zhy on 15/12/4.<br>
  * form http://stackoverflow.com/questions/1016896/get-screen-dimensions-in-pixels/15699681#15699681
  */
 public class ScreenUtils

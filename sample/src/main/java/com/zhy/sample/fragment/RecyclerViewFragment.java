@@ -60,7 +60,7 @@ public class RecyclerViewFragment extends Fragment
         public com.zhy.base.adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
             com.zhy.base.adapter.ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
-            AutoUtils.autoSize(viewHolder.getConvertView());
+            AutoUtils.auto(viewHolder.getConvertView());
             return viewHolder;
         }
 
