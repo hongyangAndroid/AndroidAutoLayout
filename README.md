@@ -5,6 +5,12 @@
 
 非常感谢 ： 吃土豆的人 的协作。
 
+
+
+AndroidAutoSize目前作者一直在维护，私下也有一些交流，也是 AndroidAutoLayout 3年的使用者，自研了[AndroidAutoSize](https://github.com/JessYanCoding/AndroidAutoSize), 在目前本库已经没有精力维护的情况下，推荐使用；如果使用了本库，迁移成本也非常低,[迁移指南](https://github.com/JessYanCoding/AndroidAutoSize/issues/90)。
+
+
+
 ## 效果图
 
 最大幅度解决适配问题，并且最大化方便开发者。
