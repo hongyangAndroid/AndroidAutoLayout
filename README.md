@@ -244,6 +244,7 @@ public View getView(int position, View convertView, ViewGroup parent)
 }
 ```
 
+> AutoUtils.autoSize(this); 使用前请保证当前View已经设置了LayoutParams
 注意` AutoUtils.autoSize(convertView);`这行代码的位置即可。demo中也有相关实例。
 
 
