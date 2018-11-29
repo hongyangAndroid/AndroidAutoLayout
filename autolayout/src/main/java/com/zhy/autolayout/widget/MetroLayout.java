@@ -25,6 +25,8 @@ public class MetroLayout extends ViewGroup
 {
 
     private final AutoLayoutHelper mHelper = new AutoLayoutHelper(this);
+    private Context mContext;
+    private AttributeSet mAttrs;
 
     private static class MetroBlock
     {
@@ -54,7 +56,7 @@ public class MetroLayout extends ViewGroup
             randomColor();
 
         if (!isInEditMode())
-            mHelper.adjustChildren();
+            mHelper.adjustChildren(mContext,mAttrs);
 
         measureChildren(widthMeasureSpec, heightMeasureSpec);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -186,6 +188,8 @@ public class MetroLayout extends ViewGroup
     @Override
     public MetroLayout.LayoutParams generateLayoutParams(AttributeSet attrs)
     {
+        this.mContext = getContext();
+        this.mAttrs = attrs;
         return new LayoutParams(getContext(), attrs);
     }
 
