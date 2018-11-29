@@ -295,11 +295,11 @@ public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 
 ## 常见问题
 
-###(1)导入后出现`org/gradle/api/publication/maven/internal/DefaultMavenFactory`
+### (1)导入后出现`org/gradle/api/publication/maven/internal/DefaultMavenFactory`
 
 最简单的方式，通过`compile 'com.zhy:autolayout:x.x.x'`进行依赖使用，如果一定要以module引用，参考该issue[#74](https://github.com/hongyangAndroid/AndroidAutoLayout/issues/74)
 
-###(2)RadioGroup,Toolbar等控件中的子View无法完成适配
+### (2)RadioGroup,Toolbar等控件中的子View无法完成适配
 
 这个其实上文已经提到过了，需要自己扩展。不过这个很多使用者贡献了他们的扩展类可以直接使用，
 参考[autolayout-widget](https://github.com/hongyangAndroid/AndroidAutoLayout/tree/master/widgetsample),
@@ -307,7 +307,7 @@ public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 `autolayout-widget`中方便他人，ps:需要用到哪个copy就好了，不要直接引用`autolayout-widget`，因为其引用了大量的库，可能很多
 库你是用不到的。
 
-###(3)java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity.
+### (3)java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity.
 
 这个问题是因为默认AutoLayoutActivity会继承自AppCompatActivity，所以默认需要设置
 Theme.AppCompat的theme；
