@@ -105,6 +105,15 @@ dependencies {
 * RelativeLayout -> AutoRelativeLayout
 * FrameLayout -> AutoFrameLayout
 
+或者在 Activity 中重写 onCreateView 
+```java
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        View view = AutoLayoutHelper.onCreateAutoLayoutView(name, context, attrs);
+        return view != null ? view : super.onCreateView(name, context, attrs);
+    }
+```
+
 这样也可以完成适配。
 
 ## 目前支持属性
