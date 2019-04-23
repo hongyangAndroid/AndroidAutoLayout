@@ -92,8 +92,14 @@ dependencies {
 
 让你的Activity继承自`AutoLayoutActivity`.
 
+### 第三步：
 
-非常简单的两个步骤，你就可以开始愉快的编写布局了，详细可以参考sample。
+在Application子类或Activity的setContentView之前注册AutoLayout
+
+    AutoLayoutConifg.getInstance().init(this);
+
+
+非常简单的三步，你就可以开始愉快的编写布局了，详细可以参考sample。
 
 
 
